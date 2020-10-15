@@ -13,7 +13,7 @@ public class Veterinario {
     private int matricula;
     private String nombre;
     @OneToMany
-    private Mascota mascota;
+    private List<Mascota> mascota;
 
     public String getNombreClinica() {
         return nombreClinica;
