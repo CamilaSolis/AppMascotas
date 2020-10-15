@@ -10,7 +10,7 @@ public class Veterinario {
 
     private String nombreClinica;
     @Id
-    private int matricula;
+    private String matricula;
     private String nombre;
     @OneToMany
     private List<Mascota> mascota;
@@ -23,11 +23,11 @@ public class Veterinario {
         this.nombreClinica = nombreClinica;
     }
 
-    public int getMatricula() {
+    public String getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
 
