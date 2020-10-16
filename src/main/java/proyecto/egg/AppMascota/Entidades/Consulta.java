@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -13,23 +14,24 @@ public class Consulta {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private int id;
+    private String id;
     private Date fecha;
     private int precio;
     private String observaciones;
-    @OneToOne
-    private Veterinario veterinario;
+    @ManyToOne
     private Mascota mascota;
     private String peso;
     private String motivo;
     private String vacuna;
     private String cirujia;
-
-    public int getId() {
+    @OneToOne
+    private Veterinario veterinario;
+    
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -18,9 +18,9 @@ public class Mascota {
     private String id;
     private String raza;
     private Date fechaNacimiento;
-    private Cliente cliente;
     @OneToMany
     private List<Consulta> historiaClinica;
+    
     
 
     public String getNombre() {
@@ -53,14 +53,6 @@ public class Mascota {
 
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 
     public List<Consulta> getHistoriaClinica() {

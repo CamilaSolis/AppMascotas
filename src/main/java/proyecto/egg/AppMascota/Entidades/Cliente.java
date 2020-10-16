@@ -10,8 +10,8 @@ import javax.persistence.OneToMany;
 public class Cliente {
     private String nombre;
     @Id
-    private int documento;
-    private int telefono;
+    private String documento;
+    private String telefono;
     private String email;
     private String domicilio;
     @OneToMany
@@ -25,19 +25,19 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public int getDocumento() {
+    public String getDocumento() {
         return documento;
     }
 
-    public void setDocumento(int documento) {
+    public void setDocumento(String documento) {
         this.documento = documento;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
