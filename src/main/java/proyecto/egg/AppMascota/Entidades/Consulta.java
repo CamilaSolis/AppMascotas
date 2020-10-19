@@ -16,16 +16,17 @@ public class Consulta {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private Date fecha;
-    private int precio;
-    private String observaciones;
-    @ManyToOne
-    private Mascota mascota;
-    private String peso;
     private String motivo;
+    private Integer precio;
+    private String peso;
     private String vacuna;
     private String cirujia;
+    private String observaciones;
+    
     @OneToOne
     private Veterinario veterinario;
+    @ManyToOne
+    private Mascota mascota;
     
     public String getId() {
         return id;
@@ -43,11 +44,11 @@ public class Consulta {
         this.fecha = fecha;
     }
 
-    public int getPrecio() {
+    public Integer getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(Integer precio) {
         this.precio = precio;
     }
 
@@ -106,10 +107,11 @@ public class Consulta {
     public void setCirujia(String cirujia) {
         this.cirujia = cirujia;
     }
-    
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Consulta{" + "id=" + id + ", fecha=" + fecha + ", motivo=" + motivo + ", precio=" + precio + ", peso=" + peso + ", vacuna=" + vacuna + ", cirujia=" + cirujia + ", observaciones=" + observaciones + ", veterinario=" + veterinario + ", mascota=" + mascota + '}';
+    }
     
     
 }
