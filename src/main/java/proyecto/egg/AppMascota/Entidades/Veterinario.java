@@ -12,11 +12,18 @@ public class Veterinario {
     @Id
     private String matricula;
     private String nombre;
-    @OneToMany
+    private String zona;
 
-    private List<Mascota> mascota;
+    public String getZona() {
+        return zona;
+    }
 
+    public void setZona(String zona) {
+        this.zona = zona;
+    }
+    
 
+    
     public String getNombreClinica() {
         return nombreClinica;
     }
