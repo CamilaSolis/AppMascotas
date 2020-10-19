@@ -15,6 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -54,7 +55,7 @@ public class ClienteServicio {
     }
     
     @Transactional
-    public void modificaciónCliente(String nombre, String documento, String telefono, String email,String domicilio) throws ErrorServicio{
+    public void modificaciónCliente(String nombre, String documento, String telefono, String email,String domicilio, String clave) throws ErrorServicio{
         validar(nombre, documento,telefono, email, domicilio);
         Optional<Cliente> respuesta = clienteRepositorio.findById(documento);
         if(respuesta.isPresent()){
@@ -64,7 +65,8 @@ public class ClienteServicio {
         cliente.setTelefono(telefono);
         cliente.setEmail(email);
         cliente.setDomicilio(domicilio);
-        
+        String encriptada = new BCryptPasswordEncoder().encode(clave);
+        cliente.setClave(encriptada);
         clienteRepositorio.save(cliente);
         }else{
             throw new ErrorServicio("No se encontró el cliente");
@@ -101,11 +103,11 @@ public class ClienteServicio {
         return c;
     }
     
-    @Override
-    public UserDetails loadUserByUsername(String documento) throws UsernameNotFoundException {
-        Cliente cliente = clienteRepositorio.findById(documento);
+    //@Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Optional<Cliente> cliente = clienteRepositorio.findById(email);
         if (cliente != null) {
-            System.out.println(" mail: " + cliente.getEmail()) + " + clave " + cliente.getClave());
+            System.out.println(" mail: " + cliente.get().getEmail() + " + clave " + cliente.get().getClave());
             List<GrantedAuthority> permisos = new ArrayList<>();
             
             GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_CLIENTE_REGISTRADO");
@@ -115,7 +117,7 @@ public class ClienteServicio {
             HttpSession session = attr.getRequest().getSession(true);
             session.setAttribute("clientesession", cliente);
             
-            User user = new User(cliente.getEmail(), cliente.getClave(), permisos);
+            User user = new User(cliente.get().getEmail(), cliente.get().getClave(), permisos);
             return user;
         } else {
             return null;

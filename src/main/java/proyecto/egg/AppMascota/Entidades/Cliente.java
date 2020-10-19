@@ -16,6 +16,7 @@ public class Cliente {
     private String email;
     private String domicilio;
     private Date baja;
+    private String clave;
     @OneToMany
     private List<Mascota> mascota;
 
@@ -74,7 +75,14 @@ public class Cliente {
     public void setMascota(List<Mascota> mascota) {
         this.mascota = mascota;
     }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
     
-    
-    
+        
 }
