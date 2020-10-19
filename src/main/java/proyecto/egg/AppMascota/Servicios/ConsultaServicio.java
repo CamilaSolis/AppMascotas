@@ -11,8 +11,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import proyecto.egg.AppMascota.Entidades.Consulta;
+import proyecto.egg.AppMascota.Entidades.Veterinario;
 import proyecto.egg.AppMascota.Errores.ErrorServicio;
 import proyecto.egg.AppMascota.Repositorios.ConsultaRepositorio;
+import proyecto.egg.AppMascota.Repositorios.VeterinarioRepositorio;
 
 @Service
 public class ConsultaServicio implements UserDetailsService{
@@ -20,8 +22,8 @@ public class ConsultaServicio implements UserDetailsService{
     @Autowired
     private ConsultaRepositorio consultaRepositorio;
     
-//    @Autowired
-//    private VeterinarioRepositorio veterinarioRepositorio;
+    @Autowired
+    private VeterinarioRepositorio veterinarioRepositorio;
 //    
 //    @Autowired
 //    private MascotaRepositorio mascotaRepositorio;
@@ -42,15 +44,15 @@ public class ConsultaServicio implements UserDetailsService{
         consulta.setCirujia(cirujia);
         consulta.setObservaciones(observaciones);
         
-//        Opcional<Veterinario> buscarVeterinario = veterinarioRepositorio.findById(idVeterinario);      
-//        if (buscarVeterinario.isPresent()){
-//          Veterinario veterinario = buscarVeterinario.get();
-//          consulta.setVeterinario(veterinario);
-//          }else{
-//            throw new ErrorServicio("No se encontro el veterinario solicitado");
-//        }
+        Optional<Veterinario> buscarVeterinario = veterinarioRepositorio.findById(idVeterinario);      
+        if (buscarVeterinario.isPresent()){
+          Veterinario veterinario = buscarVeterinario.get();
+          consulta.setVeterinario(veterinario);
+          }else{
+            throw new ErrorServicio("No se encontro el veterinario solicitado");
+        }
 
-//        Opcional<Mascota> buscarMascota = mascotaRepositorio.findById(idVeterinario);      
+//        Optional<Mascota> buscarMascota = mascotaRepositorio.findById(idVeterinario);      
 //        if (buscarMascota.isPresent()){
 //          Mascota mascota = buscarMascota.get();
 //          consulta.setMascota(mascota);
@@ -76,13 +78,13 @@ public class ConsultaServicio implements UserDetailsService{
             consulta.setCirujia(cirujia);
             consulta.setObservaciones(observaciones);
             
-//        Opcional<Veterinario> buscarVeterinario = veterinarioRepositorio.findById(idVeterinario);      
-//        if (buscarVeterinario.isPresent()){
-//          Veterinario veterinario = buscarVeterinario.get();
-//          consulta.setVeterinario(veterinario);
-//          }else{
-//            throw new ErrorServicio("No se encontro el veterinario solicitado");
-//        }
+        Optional<Veterinario> buscarVeterinario = veterinarioRepositorio.findById(idVeterinario);      
+        if (buscarVeterinario.isPresent()){
+          Veterinario veterinario = buscarVeterinario.get();
+          consulta.setVeterinario(veterinario);
+          }else{
+            throw new ErrorServicio("No se encontro el veterinario solicitado");
+        }
 
 //        Opcional<Mascota> buscarMascota = mascotaRepositorio.findById(idVeterinario);      
 //        if (buscarMascota.isPresent()){
