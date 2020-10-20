@@ -66,12 +66,10 @@ public class VeterinarioServicio {
 
     }
 
-//    public List<Veterinario> listarVeterinarios() 
-//        throw ErrorServicio{
-//        List listaVeterinarios = new ArrayList();
-//
-//        return listaVeterinarios;
-//    }
+    public List<Veterinario> listarVeterinarios(){
+      return veterinarioRepositorio.findAll();
+                
+    }
 
     public void buscarVeterinario(String matricula) {
 
