@@ -54,6 +54,8 @@ public class ClienteServicio {
         }
     }
     
+    
+    
     @Transactional
     public void modificaciónCliente(String nombre, String documento, String telefono, String email,String domicilio, String clave) throws ErrorServicio{
         validar(nombre, documento,telefono, email, domicilio);

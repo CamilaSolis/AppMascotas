@@ -10,7 +10,7 @@ import proyecto.egg.AppMascota.Entidades.Cliente;
 @Repository
 public interface ClienteRepositorio extends JpaRepository<Cliente,String> {
     
-     @Query("SELECT c FROM Cliente c WHERE c.mail = :mail")
-    public Cliente buscarPorMail(@Param("mail") String mail);
+     @Query("SELECT c FROM Cliente c WHERE c.email=:email")
+    public Cliente buscarPorMail(@Param("email") String email);
     
 }
