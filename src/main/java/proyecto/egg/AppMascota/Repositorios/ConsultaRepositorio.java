@@ -10,7 +10,5 @@ import proyecto.egg.AppMascota.Entidades.Consulta;
 
 @Repository
 public interface ConsultaRepositorio extends JpaRepository<Consulta, String>{
-    
-    @Query("SELECT c FROM Consulta c INNER JOIN Mascota m ON c.mascota_id = m.id WHERE c.mascota_id = :idMascota AND m.id = :idMascota")
-    public List<Consulta> buscarConsultaPorMascota(@Param("idMascota") String idMascota);
+
 }
