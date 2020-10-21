@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PortalControlador {
    @GetMapping ("/")
    public String index(){
-   return ("index.html");
+   return "index.html";
 }
    @GetMapping ("/login")
   public String login(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, ModelMap model) { 
