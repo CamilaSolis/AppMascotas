@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>RegistroCliente | Cyber Medical Pet</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <!-- CSS PRINCIPAL (HEADER Y FOOTER) -->
+  <link rel="stylesheet" href="./css/styles.css">
+
+  <!-- CSS LOCAL -->
+
+</head>
+<body>
+  <header class="d-flex align-items-center">
+    <img src="img/logo-blanco.png">
+  </header>
+  <div>
+    <br>
+    <h3 class="titulo">Formá parte de nuestra comunidad Cyber Medical Pet</h3>
+    <h5>Ingresá tus datos para que puedas acceder a todos los servicios</h5>
+  </div>
+  <br>
+  <div>
+    <form action="registrarCliente" method="post">
+      <section >    
+        <label class="pedirDatos">Ingresa tu nombre</label>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" aria-label="nombre" aria-describedby="basic-addon1" name="nombre" required>
+        </div>
+        <label class="pedirDatos">DNI</label>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" aria-label="dni" aria-describedby="basic-addon1" name="dni" required>
+        </div>
+        <label class="pedirDatos">Teléfono</label>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" aria-label="telefono" aria-describedby="basic-addon1" name="telefono" required>
+        </div>
+        <label class="pedirDatos">Domicilio</label>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" aria-label="domicilio" aria-describedby="basic-addon1" name="domicilio" required>
+        </div>
+      </section>
+      <section>
+        <label class="pedirDatos">Mail</label>
+        <div class="input-group mb-3">
+          <input type="email" class="form-control" aria-label="mail" aria-describedby="basic-addon1" name="mail" required>
+        </div>
+        <label class="pedirDatos">Cree una clave</label>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" aria-label="clave" aria-describedby="basic-addon1" name="clave1" required>
+        </div>
+        <label class="pedirDatos">Verifique la clave</label>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" aria-label="verificarClave" aria-describedby="basic-addon1" name="clave2" required>
+        </div>
+      </section>
+
+    </form>
+   
+  </div>
+  <footer class="d-flex align-items-center">
+    <p>Copyright@Cyber Medical Pet</p>
+  </footer>
+
+</body>
+</html>

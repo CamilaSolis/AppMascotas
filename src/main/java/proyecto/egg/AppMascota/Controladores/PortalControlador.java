@@ -23,9 +23,6 @@ public class PortalControlador {
   }         
   return "login.html"; 
   }
-   @GetMapping ("/veterinario")
-   public String registro(){
-   return ("veterinario.html");
-    }
+
     
 }
