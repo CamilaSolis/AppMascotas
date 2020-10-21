@@ -5,11 +5,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -17,11 +19,12 @@ import proyecto.egg.AppMascota.Entidades.Veterinario;
 import proyecto.egg.AppMascota.Errores.ErrorServicio;
 import proyecto.egg.AppMascota.Repositorios.VeterinarioRepositorio;
 
-public class VeterinarioServicio {
+public class VeterinarioServicio implements UserDetailsService {
 
     @Autowired
     VeterinarioRepositorio veterinarioRepositorio;
 
+    @Transactional
     public void registroVeterinario(String nombre, String matricula, String nombreClinica, String zona, String clave) {
         Veterinario veterinario = new Veterinario();
         veterinario.setNombre(nombre);
@@ -34,6 +37,7 @@ public class VeterinarioServicio {
 
     }
 
+    @Transactional
     public void bajaVeterinario(String matricula) throws ErrorServicio {
         Optional<Veterinario> res = veterinarioRepositorio.findById(matricula);
         if (res.isPresent()) {
@@ -47,28 +51,28 @@ public class VeterinarioServicio {
 
     }
 
+    @Transactional
     public void modificacionVeterinario(String nombre, String matricula, String nombreClinica, String zona) throws ErrorServicio {
         Optional<Veterinario> res = veterinarioRepositorio.findById(matricula);
-        
-        if(res.isPresent()){
+
+        if (res.isPresent()) {
             Veterinario veterinario = res.get();
             veterinario.setNombre(nombre);
             veterinario.setMatricula(matricula);
             veterinario.setNombreClinica(nombreClinica);
             veterinario.setZona(zona);
-            
+
             veterinarioRepositorio.save(veterinario);
-            
+
         } else {
             throw new ErrorServicio("No existe esa matricula de veterinario");
         }
-        
 
     }
 
-    public List<Veterinario> listarVeterinarios(){
-      return veterinarioRepositorio.findAll();
-                
+    public List<Veterinario> listarVeterinarios() {
+        return veterinarioRepositorio.findAll();
+
     }
 
     public void buscarVeterinario(String matricula) {
@@ -85,7 +89,7 @@ public class VeterinarioServicio {
 
     }
 
-//    @Override
+    @Override
     public UserDetails loadUserByUsername(String matricula) throws UsernameNotFoundException {
         Optional<Veterinario> veterinario = veterinarioRepositorio.findById(matricula);
         if (veterinario != null) {
