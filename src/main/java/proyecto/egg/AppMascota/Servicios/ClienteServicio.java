@@ -30,7 +30,7 @@ public class ClienteServicio {
     private ClienteRepositorio clienteRepositorio;
     
     @Transactional
-    public void registroCliente(String nombre, String documento, String telefono, String email,String domicilio) throws ErrorServicio{
+    public void registroCliente(String nombre, String documento, String telefono, String email,String domicilio, String clave1, String clave2) throws ErrorServicio{
         validar(nombre, documento,telefono, email, domicilio);
         Cliente cliente = new Cliente();
         cliente.setNombre(nombre);
@@ -68,7 +68,7 @@ public class ClienteServicio {
         cliente.setEmail(email);
         cliente.setDomicilio(domicilio);
         String encriptada = new BCryptPasswordEncoder().encode(clave);
-        cliente.setClave(encriptada);
+        cliente.setClave1(encriptada);
         clienteRepositorio.save(cliente);
         }else{
             throw new ErrorServicio("No se encontró el cliente");
@@ -109,7 +109,7 @@ public class ClienteServicio {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<Cliente> cliente = clienteRepositorio.findById(email);
         if (cliente != null) {
-            System.out.println(" mail: " + cliente.get().getEmail() + " + clave " + cliente.get().getClave());
+            System.out.println(" mail: " + cliente.get().getEmail() + " + clave " + cliente.get().getClave1());
             List<GrantedAuthority> permisos = new ArrayList<>();
             
             GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_CLIENTE_REGISTRADO");
@@ -119,7 +119,7 @@ public class ClienteServicio {
             HttpSession session = attr.getRequest().getSession(true);
             session.setAttribute("clientesession", cliente);
             
-            User user = new User(cliente.get().getEmail(), cliente.get().getClave(), permisos);
+            User user = new User(cliente.get().getEmail(), cliente.get().getClave1(), permisos);
             return user;
         } else {
             return null;
