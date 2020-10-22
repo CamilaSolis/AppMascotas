@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -15,24 +16,34 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
 import proyecto.egg.AppMascota.Entidades.Veterinario;
 import proyecto.egg.AppMascota.Errores.ErrorServicio;
 import proyecto.egg.AppMascota.Repositorios.VeterinarioRepositorio;
 
+@Service
 public class VeterinarioServicio implements UserDetailsService {
 
     @Autowired
     VeterinarioRepositorio veterinarioRepositorio;
 
     @Transactional
-    public void registroVeterinario(String nombre, String matricula, String nombreClinica, String zona, String clave) {
+    public void registroVeterinario(String nombre, String matricula, String nombreClinica, String zona, String password1, String password2) throws ErrorServicio {
+        
+        validar(nombre, matricula, nombreClinica, zona, password1, password2);
         Veterinario veterinario = new Veterinario();
         veterinario.setNombre(nombre);
         veterinario.setMatricula(matricula);
         veterinario.setNombreClinica(nombreClinica);
         veterinario.setZona(zona);
-        veterinario.setClave(clave);
 
+//        String encriptada = new BCryptPasswordEncoder().encode(password1);
+//        veterinario.setPassword1(encriptada);
+//        String encriptada2 = new BCryptPasswordEncoder().encode(password2);
+//        veterinario.setPassword2(encriptada2);
         veterinarioRepositorio.save(veterinario);
 
     }
@@ -110,26 +121,24 @@ public class VeterinarioServicio implements UserDetailsService {
         }
     }
 
-    public void validar(String nombre, String matricula, String nombreClinica, String zona, String clave) throws ErrorServicio {
+    public void validar(String nombre, String matricula, String nombreClinica, String zona, String password1, String password2) throws ErrorServicio {
 
         if (nombre == null || nombre.isEmpty()) {
-            throw new ErrorServicio("El documento no puede estar vacío");
-        }
-        if (matricula == null || matricula.isEmpty()) {
             throw new ErrorServicio("El nombre no puede estar vacío");
         }
+        if (matricula == null || matricula.isEmpty()) {
+            throw new ErrorServicio("Matricula no puede estar vacío");
+        }
         if (nombreClinica == null || nombreClinica.isEmpty()) {
-            throw new ErrorServicio("El telefono no puede estar vacío");
+            throw new ErrorServicio("El campo nombre de Clinica no puede estar vacío");
         }
 
         if (zona == null || zona.isEmpty()) {
             throw new ErrorServicio("El domicilio no puede estar vacío");
         }
-        if (clave == null || clave.isEmpty()) {
-            throw new ErrorServicio("El email no puede estar vacío");
-//        }
-//        if (!clave.equals(clave2)) {
-//            throw new ErrorServicio("Las claves deben ser iguales");
+     
+//        if (!password1.equals(password2)) {
+//            throw new ErrorServicio("Las passwords deben ser iguales");
 //        } 
         }
     }
