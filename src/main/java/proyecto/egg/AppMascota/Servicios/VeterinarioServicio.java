@@ -32,7 +32,7 @@ public class VeterinarioServicio implements UserDetailsService {
 
     @Transactional
     public void registroVeterinario(String nombre, String matricula, String nombreClinica, String zona, String password1, String password2) throws ErrorServicio {
-        
+
         validar(nombre, matricula, nombreClinica, zona, password1, password2);
         Veterinario veterinario = new Veterinario();
         veterinario.setNombre(nombre);
@@ -104,7 +104,7 @@ public class VeterinarioServicio implements UserDetailsService {
     public UserDetails loadUserByUsername(String matricula) throws UsernameNotFoundException {
         Optional<Veterinario> veterinario = veterinarioRepositorio.findById(matricula);
         if (veterinario != null) {
-            System.out.println(" matricula: " + veterinario.get().getMatricula() + " + clave " + veterinario.get().getClave());
+            System.out.println(" matricula: " + veterinario.get().getMatricula() + " + password1 " + veterinario.get().getPassword1());
             List<GrantedAuthority> permisos = new ArrayList<>();
 
             GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_CLIENTE_REGISTRADO");
@@ -114,7 +114,7 @@ public class VeterinarioServicio implements UserDetailsService {
             HttpSession session = attr.getRequest().getSession(true);
             session.setAttribute("veterinarioSession", veterinario);
 
-            User user = new User(veterinario.get().getMatricula(), veterinario.get().getClave(), permisos);
+            User user = new User(veterinario.get().getMatricula(), veterinario.get().getPassword1(), permisos);
             return user;
         } else {
             return null;
@@ -136,11 +136,9 @@ public class VeterinarioServicio implements UserDetailsService {
         if (zona == null || zona.isEmpty()) {
             throw new ErrorServicio("El domicilio no puede estar vacío");
         }
-     
-//        if (!password1.equals(password2)) {
-//            throw new ErrorServicio("Las passwords deben ser iguales");
-//        } 
+
+        if (!password1.equals(password2)) {
+            throw new ErrorServicio("Las passwords deben ser iguales");
         }
     }
-
 }
