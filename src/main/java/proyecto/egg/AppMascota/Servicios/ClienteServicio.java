@@ -31,7 +31,7 @@ public class ClienteServicio {
     
     @Transactional
     public void registroCliente(String nombre, String documento, String telefono, String email,String domicilio, String clave1, String clave2) throws ErrorServicio{
-        validar(nombre, documento,telefono, email, domicilio);
+        validar(nombre, documento,telefono, email, domicilio, clave1, clave2);
         Cliente cliente = new Cliente();
         cliente.setNombre(nombre);
         cliente.setDocumento(documento);
@@ -39,6 +39,8 @@ public class ClienteServicio {
         cliente.setEmail(email);
         cliente.setDomicilio(domicilio);
         
+        String encriptada = new BCryptPasswordEncoder().encode(clave1);
+        cliente.setClave1(encriptada);
         clienteRepositorio.save(cliente);
     }
     
@@ -57,8 +59,8 @@ public class ClienteServicio {
     
     
     @Transactional
-    public void modificaciónCliente(String nombre, String documento, String telefono, String email,String domicilio, String clave) throws ErrorServicio{
-        validar(nombre, documento,telefono, email, domicilio);
+    public void modificaciónCliente(String nombre, String documento, String telefono, String email,String domicilio, String clave1, String clave2) throws ErrorServicio{
+        validar(nombre, documento,telefono, email, domicilio,clave1, clave2);
         Optional<Cliente> respuesta = clienteRepositorio.findById(documento);
         if(respuesta.isPresent()){
             Cliente cliente = respuesta.get();
@@ -67,7 +69,7 @@ public class ClienteServicio {
         cliente.setTelefono(telefono);
         cliente.setEmail(email);
         cliente.setDomicilio(domicilio);
-        String encriptada = new BCryptPasswordEncoder().encode(clave);
+        String encriptada = new BCryptPasswordEncoder().encode(clave1);
         cliente.setClave1(encriptada);
         clienteRepositorio.save(cliente);
         }else{
@@ -75,7 +77,7 @@ public class ClienteServicio {
         }
     }
     
-    public void validar(String nombre, String documento, String telefono, String email, String domicilio) throws ErrorServicio {
+    public void validar(String nombre, String documento, String telefono, String email, String domicilio, String clave1, String clave2) throws ErrorServicio {
         
         if (documento == null || documento.isEmpty()) {
             throw new ErrorServicio("El documento no puede estar vacío");
@@ -92,11 +94,11 @@ public class ClienteServicio {
         }
         if (email == null || email.isEmpty()) {
             throw new ErrorServicio("El email no puede estar vacío");
-//        }
-//        if (!clave.equals(clave2)) {
-//            throw new ErrorServicio("Las claves deben ser iguales");
-//        }
         }
+        if (!clave1.equals(clave2)) {
+            throw new ErrorServicio("Las claves deben ser iguales");
+        }
+        
     }
     
      public Cliente getCliente(){

@@ -21,7 +21,7 @@ public class VeterinarioControlador {
     @Autowired
     private VeterinarioServicio veterinarioServicio;
     
-   @GetMapping ("/")
+   @GetMapping("/")
    public String veterinario(){
    return "veterinario.html";
     }

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package proyecto.egg.AppMascota.Controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +19,12 @@ public class ClienteControlador {
     private ClienteServicio clienteServicio;
 
     @GetMapping("/")
-    public String cliente() {
-        return "cliente.html";
+    public String cliente(){
+        return "registroCliente.html";
     }
 
     @PostMapping("/registroCliente")
-    public String registroCliente(ModelMap model, ModelMap modelo, @RequestParam String nombre, @RequestParam String documento, @RequestParam String telefono,
+    public String registroCliente(ModelMap model, @RequestParam String nombre, @RequestParam String documento, @RequestParam String telefono,
             @RequestParam String email, @RequestParam String domicilio, @RequestParam String zona, @RequestParam String clave1, @RequestParam String clave2) throws ErrorServicio {
 
         try {
@@ -36,7 +32,11 @@ public class ClienteControlador {
         } catch (ErrorServicio ex) {
             model.put("error", ex.getMessage());
             model.put("nombre", nombre);
-            return "cliente.html";
+            model.put("documento", documento);
+            model.put("telefono", telefono);
+            model.put("email", email);
+            model.put("domicilio", domicilio);
+            return "registroCliente.html";
         }
         model.put("titulo", "Se creó el cliente");
         return "exito";

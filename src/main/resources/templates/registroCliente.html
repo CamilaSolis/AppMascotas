@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
   <title>RegistroCliente | Cyber Medical Pet</title>
   <meta charset="utf-8">
@@ -9,7 +9,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
   <!-- CSS PRINCIPAL (HEADER Y FOOTER) -->
-  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
 
   <!-- CSS LOCAL -->
 
@@ -25,7 +25,7 @@
   </div>
   <br>
   <div>
-    <form action="cliente/registrarCliente" method="post">
+    <form action="/cliente/registroCliente" method="post">
       <section >    
         <label class="pedirDatos">Ingresa tu nombre</label>
         <div class="input-group mb-3">
@@ -61,7 +61,7 @@
         <div style="text-align: center;">
           <button style="position: relative; margin: 2px;" class="btn btn-primary" type="submit">REGISTRARME</button>
           <br>
-          <button style="position: relative; margin: 2px;" class="btn btn-secondary" href="/index.html" type="button">Inicio</button>
+          <button style="position: relative; margin: 2px;" class="btn btn-secondary" href="#" type="button">Inicio</button>
         </div>
     </form>
    
