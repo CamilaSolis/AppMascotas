@@ -1,0 +1,50 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  min-height: 100vh;
+}
+header{
+  height: 200px;
+  width: 100%;
+  background-color: #029DBF;
+}
+header img{
+  height: 150px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+.titulo{
+
+font-size: xx-large;
+font-weight: bold;
+}
+.pedirDatos{
+  font-weight: bold;
+  font-size: medium;
+}
+input{
+  background-color: #9ee2f1;
+  border-color: #029DBF;
+}
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #029DBF;
+  color: #fff;
+  height: 100px;
+}
+footer p{
+  margin: 0 auto;
+}
+@media (max-width: 992px){
+  header{
+    height: 100px;
+  }
+  header img{
+    height: 80px;
+  }
+}

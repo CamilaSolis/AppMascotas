@@ -14,7 +14,8 @@ public class Veterinario {
     private String matricula;
     private String nombre;
     private String zona;
-    private String clave;
+    private String password1;
+    private String password2;
 
     public Date getBaja() {
         return baja;
@@ -24,14 +25,6 @@ public class Veterinario {
         this.baja = baja;
     }
     private Date baja;
-
-    public String getClave() {
-        return clave;
-    }
-
-    public void setClave(String clave) {
-        this.clave = clave;
-    }
 
     public String getZona() {
         return zona;
@@ -63,6 +56,22 @@ public class Veterinario {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getPassword1() {
+        return password1;
+    }
+
+    public void setPassword1(String password1) {
+        this.password1 = password1;
+    }
+
+    public String getPassword2() {
+        return password2;
+    }
+
+    public void setPassword2(String password2) {
+        this.password2 = password2;
     }
 
 }
