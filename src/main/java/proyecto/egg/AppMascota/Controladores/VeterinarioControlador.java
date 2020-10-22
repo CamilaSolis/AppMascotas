@@ -21,15 +21,15 @@ public class VeterinarioControlador {
     @Autowired
     private VeterinarioServicio veterinarioServicio;
     
-   @GetMapping("/")
-   public String veterinario(){
-   return "veterinario.html";
+    @GetMapping("")
+    public String veterinario(){
+        return "veterinario.html";
     }
   
     
     @PostMapping("/registroVeterinario")
     public String registroVeterinario (ModelMap model , ModelMap modelo, @RequestParam String nombre,@RequestParam String matricula,@RequestParam String nombreClinica, 
-            @RequestParam String zona, @RequestParam String password1, @RequestParam String password2) throws ErrorServicio{
+        @RequestParam String zona, @RequestParam String password1, @RequestParam String password2) throws ErrorServicio{
        
         try{
             veterinarioServicio.registroVeterinario(nombre, matricula, nombreClinica, zona, password1,password2);
@@ -38,7 +38,7 @@ public class VeterinarioControlador {
             model.put("nombre", nombre);
             return "veterinario.html";
         }
-         model.put("titulo", "Se creó el veterinario");
+        model.put("titulo", "Se creó el veterinario");
         return "exito";
 }
     

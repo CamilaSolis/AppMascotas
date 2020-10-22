@@ -18,7 +18,7 @@ public class ClienteControlador {
     @Autowired
     private ClienteServicio clienteServicio;
 
-    @GetMapping("/")
+    @GetMapping("")
     public String cliente(){
         return "registroCliente.html";
     }
