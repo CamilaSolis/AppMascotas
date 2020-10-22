@@ -16,6 +16,19 @@ header img{
   display: block;
   margin: 0 auto;
 }
+.titulo{
+
+font-size: xx-large;
+font-weight: bold;
+}
+.pedirDatos{
+  font-weight: bold;
+  font-size: medium;
+}
+input{
+  background-color: #9ee2f1;
+  border-color: #029DBF;
+}
 footer{
   position: absolute;
   bottom: 0;
