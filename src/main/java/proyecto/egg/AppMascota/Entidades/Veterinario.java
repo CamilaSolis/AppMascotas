@@ -1,5 +1,6 @@
 package proyecto.egg.AppMascota.Entidades;
 
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,6 +17,15 @@ public class Veterinario {
     private String password1;
     private String password2;
 
+    public Date getBaja() {
+        return baja;
+    }
+
+    public void setBaja(Date baja) {
+        this.baja = baja;
+    }
+    private Date baja;
+
     public String getZona() {
         return zona;
     }
@@ -23,9 +33,7 @@ public class Veterinario {
     public void setZona(String zona) {
         this.zona = zona;
     }
-    
 
-    
     public String getNombreClinica() {
         return nombreClinica;
     }
@@ -65,7 +73,5 @@ public class Veterinario {
     public void setPassword2(String password2) {
         this.password2 = password2;
     }
-    
-    
 
 }
