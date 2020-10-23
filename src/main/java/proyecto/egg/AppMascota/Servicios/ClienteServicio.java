@@ -14,6 +14,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,7 @@ import proyecto.egg.AppMascota.Errores.ErrorServicio;
 import proyecto.egg.AppMascota.Repositorios.ClienteRepositorio;
 
 @Service
-public class ClienteServicio {
+public class ClienteServicio implements UserDetailsService{
     
     @Autowired
     private ClienteRepositorio clienteRepositorio;
@@ -107,11 +108,11 @@ public class ClienteServicio {
         return c;
     }
     
-    //@Override
+    @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<Cliente> cliente = clienteRepositorio.findById(email);
         if (cliente != null) {
-            System.out.println(" mail: " + cliente.get().getEmail() + " + clave " + cliente.get().getClave1());
+            System.out.println(" email: " + cliente.get().getEmail() + " + clave1 " + cliente.get().getClave1());
             List<GrantedAuthority> permisos = new ArrayList<>();
             
             GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_CLIENTE_REGISTRADO");
