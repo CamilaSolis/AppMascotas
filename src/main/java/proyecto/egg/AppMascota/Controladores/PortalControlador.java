@@ -16,7 +16,7 @@ import proyecto.egg.AppMascota.Servicios.ClienteServicio;
 @RequestMapping("/")
 public class PortalControlador {
     
-        @Autowired
+    @Autowired
     private ClienteServicio clienteServicio;
     
     @GetMapping ("/")
@@ -40,7 +40,7 @@ public class PortalControlador {
         
         System.out.println(clienteServicio.getCliente().getEmail());
         
-        model.put("usuariosession",clienteServicio.getCliente());
+        model.put("clientesession",clienteServicio.getCliente());
         
         return "panelUsuario.html";
     }
