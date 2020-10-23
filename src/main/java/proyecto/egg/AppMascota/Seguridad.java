@@ -23,7 +23,7 @@ public class Seguridad extends WebSecurityConfigurerAdapter{
     
      @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-       // auth.userDetailsService(clienteServicio)ilsService(clienteServicio).passwordEncoder(new BCryptPasswordEncoder());
+       auth.userDetailsService(clienteServicio).passwordEncoder(new BCryptPasswordEncoder());
     }
 
     @Override
@@ -35,9 +35,9 @@ public class Seguridad extends WebSecurityConfigurerAdapter{
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/logincheck")
-                .usernameParameter("mail")
-                .passwordParameter("clave")
-                .defaultSuccessUrl("/inicio")
+                .usernameParameter("email")
+                .passwordParameter("clave1")
+                .defaultSuccessUrl("/panelUsuario")
                 .failureUrl("/login?error=error")
                 .permitAll()
               .and().logout()
