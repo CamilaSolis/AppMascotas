@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -29,9 +30,10 @@ public class VeterinarioServicio implements UserDetailsService {
     @Autowired
     VeterinarioRepositorio veterinarioRepositorio;
 
+    @Transactional
     public void registroVeterinario(String nombre, String matricula, String nombreClinica, String zona, String password1, String password2) throws ErrorServicio {
-        validar(nombre,matricula,nombreClinica,zona,password1);
 
+        validar(nombre, matricula, nombreClinica, zona, password1, password2);
         Veterinario veterinario = new Veterinario();
         veterinario.setNombre(nombre);
         veterinario.setMatricula(matricula);
@@ -46,6 +48,7 @@ public class VeterinarioServicio implements UserDetailsService {
 
     }
 
+    @Transactional
     public void bajaVeterinario(String matricula) throws ErrorServicio {
         Optional<Veterinario> res = veterinarioRepositorio.findById(matricula);
         if (res.isPresent()) {
@@ -59,6 +62,7 @@ public class VeterinarioServicio implements UserDetailsService {
 
     }
 
+    @Transactional
     public void modificacionVeterinario(String nombre, String matricula, String nombreClinica, String zona) throws ErrorServicio {
         Optional<Veterinario> res = veterinarioRepositorio.findById(matricula);
 
@@ -100,7 +104,11 @@ public class VeterinarioServicio implements UserDetailsService {
     public UserDetails loadUserByUsername(String matricula) throws UsernameNotFoundException {
         Optional<Veterinario> veterinario = veterinarioRepositorio.findById(matricula);
         if (veterinario != null) {
-            System.out.println(" matricula: " + veterinario.get().getMatricula() + " + clave " + veterinario.get().getPassword1());
+
+            System.out.println(" matricula: " + veterinario.get().getMatricula() + " + password1 " + veterinario.get().getPassword1());
+
+            System.out.println(" matricula: " + veterinario.get().getMatricula() + " + password1 " + veterinario.get().getPassword1());
+
             List<GrantedAuthority> permisos = new ArrayList<>();
 
             GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_CLIENTE_REGISTRADO");
@@ -117,28 +125,24 @@ public class VeterinarioServicio implements UserDetailsService {
         }
     }
 
-    public void validar(String nombre, String matricula, String nombreClinica, String zona, String clave) throws ErrorServicio {
+    public void validar(String nombre, String matricula, String nombreClinica, String zona, String password1, String password2) throws ErrorServicio {
 
         if (nombre == null || nombre.isEmpty()) {
-            throw new ErrorServicio("El documento no puede estar vacío");
-        }
-        if (matricula == null || matricula.isEmpty()) {
             throw new ErrorServicio("El nombre no puede estar vacío");
         }
+        if (matricula == null || matricula.isEmpty()) {
+            throw new ErrorServicio("Matricula no puede estar vacío");
+        }
         if (nombreClinica == null || nombreClinica.isEmpty()) {
-            throw new ErrorServicio("El telefono no puede estar vacío");
+            throw new ErrorServicio("El campo nombre de Clinica no puede estar vacío");
         }
 
         if (zona == null || zona.isEmpty()) {
             throw new ErrorServicio("El domicilio no puede estar vacío");
         }
-        if (clave == null || clave.isEmpty()) {
-            throw new ErrorServicio("El email no puede estar vacío");
-//        }
-//        if (!clave.equals(clave2)) {
-//            throw new ErrorServicio("Las claves deben ser iguales");
-//        } 
+
+        if (!password1.equals(password2)) {
+            throw new ErrorServicio("Las passwords deben ser iguales");
         }
     }
-
 }
