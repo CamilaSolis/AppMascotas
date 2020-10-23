@@ -25,7 +25,7 @@ public class ClienteControlador {
 
     @PostMapping("/registroCliente")
     public String registroCliente(ModelMap model, @RequestParam String nombre, @RequestParam String documento, @RequestParam String telefono,
-            @RequestParam String email, @RequestParam String domicilio, @RequestParam String zona, @RequestParam String clave1, @RequestParam String clave2) throws ErrorServicio {
+            @RequestParam String email, @RequestParam String domicilio, @RequestParam String clave1, @RequestParam String clave2) throws ErrorServicio {
 
         try {
             clienteServicio.registroCliente(nombre, documento, telefono, email, domicilio, clave1, clave2);
