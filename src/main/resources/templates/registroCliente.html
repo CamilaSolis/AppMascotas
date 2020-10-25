@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
   <title>RegistroCliente | Cyber Medical Pet</title>
   <meta charset="utf-8">
@@ -9,7 +9,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
   <!-- CSS PRINCIPAL (HEADER Y FOOTER) -->
-  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
 
   <!-- CSS LOCAL -->
 
@@ -25,40 +25,44 @@
   </div>
   <br>
   <div>
-    <form action="registrarCliente" method="post">
+    <form action="/cliente/registroCliente" method="post">
       <section >    
         <label class="pedirDatos">Ingresa tu nombre</label>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" aria-label="nombre" aria-describedby="basic-addon1" name="nombre" required>
+          <input type="text" class="form-control" name="nombre" required>
         </div>
         <label class="pedirDatos">DNI</label>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" aria-label="dni" aria-describedby="basic-addon1" name="dni" required>
+          <input type="text" class="form-control" name="documento" required>
         </div>
         <label class="pedirDatos">Teléfono</label>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" aria-label="telefono" aria-describedby="basic-addon1" name="telefono" required>
+          <input type="text" class="form-control" name="telefono" required>
         </div>
         <label class="pedirDatos">Domicilio</label>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" aria-label="domicilio" aria-describedby="basic-addon1" name="domicilio" required>
+          <input type="text" class="form-control" name="domicilio" required>
         </div>
       </section>
       <section>
         <label class="pedirDatos">Mail</label>
         <div class="input-group mb-3">
-          <input type="email" class="form-control" aria-label="mail" aria-describedby="basic-addon1" name="mail" required>
+          <input type="email" class="form-control" name="email" required>
         </div>
         <label class="pedirDatos">Cree una clave</label>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" aria-label="clave" aria-describedby="basic-addon1" name="clave1" required>
+          <input type="password" class="form-control" name="clave1" required>
         </div>
         <label class="pedirDatos">Verifique la clave</label>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" aria-label="verificarClave" aria-describedby="basic-addon1" name="clave2" required>
+          <input type="password" class="form-control" name="clave2" required>
         </div>
       </section>
-
+        <div style="text-align: center;">
+          <button style="position: relative; margin: 2px;" class="btn btn-primary" type="submit">REGISTRARME</button>
+          <br>
+          <button style="position: relative; margin: 2px;" class="btn btn-secondary" href="#" type="button">Inicio</button>
+        </div>
     </form>
    
   </div>

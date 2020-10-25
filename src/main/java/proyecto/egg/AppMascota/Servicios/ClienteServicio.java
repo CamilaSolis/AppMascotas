@@ -14,6 +14,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,14 +25,14 @@ import proyecto.egg.AppMascota.Errores.ErrorServicio;
 import proyecto.egg.AppMascota.Repositorios.ClienteRepositorio;
 
 @Service
-public class ClienteServicio {
+public class ClienteServicio implements UserDetailsService{
     
     @Autowired
     private ClienteRepositorio clienteRepositorio;
     
     @Transactional
-    public void registroCliente(String nombre, String documento, String telefono, String email,String domicilio) throws ErrorServicio{
-        validar(nombre, documento,telefono, email, domicilio);
+    public void registroCliente(String nombre, String documento, String telefono, String email,String domicilio, String clave1, String clave2) throws ErrorServicio{
+        validar(nombre, documento,telefono, email, domicilio, clave1, clave2);
         Cliente cliente = new Cliente();
         cliente.setNombre(nombre);
         cliente.setDocumento(documento);
@@ -39,6 +40,8 @@ public class ClienteServicio {
         cliente.setEmail(email);
         cliente.setDomicilio(domicilio);
         
+        String encriptada = new BCryptPasswordEncoder().encode(clave1);
+        cliente.setClave1(encriptada);
         clienteRepositorio.save(cliente);
     }
     
@@ -57,8 +60,8 @@ public class ClienteServicio {
     
     
     @Transactional
-    public void modificaciónCliente(String nombre, String documento, String telefono, String email,String domicilio, String clave) throws ErrorServicio{
-        validar(nombre, documento,telefono, email, domicilio);
+    public void modificaciónCliente(String nombre, String documento, String telefono, String email,String domicilio, String clave1, String clave2) throws ErrorServicio{
+        validar(nombre, documento,telefono, email, domicilio,clave1, clave2);
         Optional<Cliente> respuesta = clienteRepositorio.findById(documento);
         if(respuesta.isPresent()){
             Cliente cliente = respuesta.get();
@@ -67,15 +70,15 @@ public class ClienteServicio {
         cliente.setTelefono(telefono);
         cliente.setEmail(email);
         cliente.setDomicilio(domicilio);
-        String encriptada = new BCryptPasswordEncoder().encode(clave);
-        cliente.setClave(encriptada);
+        String encriptada = new BCryptPasswordEncoder().encode(clave1);
+        cliente.setClave1(encriptada);
         clienteRepositorio.save(cliente);
         }else{
             throw new ErrorServicio("No se encontró el cliente");
         }
     }
     
-    public void validar(String nombre, String documento, String telefono, String email, String domicilio) throws ErrorServicio {
+    public void validar(String nombre, String documento, String telefono, String email, String domicilio, String clave1, String clave2) throws ErrorServicio {
         
         if (documento == null || documento.isEmpty()) {
             throw new ErrorServicio("El documento no puede estar vacío");
@@ -92,11 +95,11 @@ public class ClienteServicio {
         }
         if (email == null || email.isEmpty()) {
             throw new ErrorServicio("El email no puede estar vacío");
-//        }
-//        if (!clave.equals(clave2)) {
-//            throw new ErrorServicio("Las claves deben ser iguales");
-//        }
         }
+        if (!clave1.equals(clave2)) {
+            throw new ErrorServicio("Las claves deben ser iguales");
+        }
+        
     }
     
      public Cliente getCliente(){
@@ -105,11 +108,12 @@ public class ClienteServicio {
         return c;
     }
     
-    //@Override
+    @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<Cliente> cliente = clienteRepositorio.findById(email);
+        Cliente cliente = clienteRepositorio.buscarPorMail(email);
+        System.out.println("jkdbsaf;jalsdgn");
         if (cliente != null) {
-            System.out.println(" mail: " + cliente.get().getEmail() + " + clave " + cliente.get().getClave());
+            System.out.println(" email: " + cliente.getEmail() + " + clave1 " + cliente.getClave1());
             List<GrantedAuthority> permisos = new ArrayList<>();
             
             GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_CLIENTE_REGISTRADO");
@@ -119,7 +123,7 @@ public class ClienteServicio {
             HttpSession session = attr.getRequest().getSession(true);
             session.setAttribute("clientesession", cliente);
             
-            User user = new User(cliente.get().getEmail(), cliente.get().getClave(), permisos);
+            User user = new User(cliente.getEmail(), cliente.getClave1(), permisos);
             return user;
         } else {
             return null;
