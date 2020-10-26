@@ -1,74 +1,82 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="es">
-<head>
-  <title>RegistroCliente | Cyber Medical Pet</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <head>
+        <title>RegistroCliente | Cyber Medical Pet</title>
+        <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-  <!-- CSS PRINCIPAL (HEADER Y FOOTER) -->
-  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+                    <!-- CSS PRINCIPAL (HEADER Y FOOTER) -->
+                    <link rel="stylesheet" type="text/css" href="/css/styles.css">
 
-  <!-- CSS LOCAL -->
+                        <!-- CSS LOCAL -->
 
-</head>
-<body>
-  <header class="d-flex align-items-center">
-    <img src="img/logo-blanco.png">
-  </header>
-  <div>
-    <br>
-    <h3 class="titulo">Formá parte de nuestra comunidad Cyber Medical Pet</h3>
-    <h5>Ingresá tus datos para que puedas acceder a todos los servicios</h5>
-  </div>
-  <br>
-  <div>
-    <form action="/cliente/registroCliente" method="post">
-      <section >    
-        <label class="pedirDatos">Ingresa tu nombre</label>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" name="nombre" required>
-        </div>
-        <label class="pedirDatos">DNI</label>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" name="documento" required>
-        </div>
-        <label class="pedirDatos">Teléfono</label>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" name="telefono" required>
-        </div>
-        <label class="pedirDatos">Domicilio</label>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" name="domicilio" required>
-        </div>
-      </section>
-      <section>
-        <label class="pedirDatos">Mail</label>
-        <div class="input-group mb-3">
-          <input type="email" class="form-control" name="email" required>
-        </div>
-        <label class="pedirDatos">Cree una clave</label>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" name="clave1" required>
-        </div>
-        <label class="pedirDatos">Verifique la clave</label>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" name="clave2" required>
-        </div>
-      </section>
-        <div style="text-align: center;">
-          <button style="position: relative; margin: 2px;" class="btn btn-primary" type="submit">REGISTRARME</button>
-          <br>
-          <button style="position: relative; margin: 2px;" class="btn btn-secondary" href="#" type="button">Inicio</button>
-        </div>
-    </form>
-   
-  </div>
-  <footer class="d-flex align-items-center">
-    <p>Copyright@Cyber Medical Pet</p>
-  </footer>
+                        </head>
+                        <body>
+                            <header class="d-flex align-items-center">
+                                <img src="img/logo-blanco.png">
+                            </header>
+                            <div style="margin-left: 10px">
+                                <br>
+                                    <h3 class="titulo">Formá parte de nuestra comunidad Cyber Medical Pet</h3>
+                                    <h5>Ingresá tus datos para que puedas acceder a todos los servicios</h5>
+                            </div>
+                            <br>
+                                <div style="margin-left: 10px">
+                                    <div class="row">
+                                        <div class="col-6">
 
-</body>
-</html>
+                                            <form action="/cliente/registroCliente" method="post">
+                                                <label class="pedirDatos">Ingresa tu nombre</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" name="nombre" required>
+                                                </div>
+                                                <label class="pedirDatos">DNI</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" name="documento" required>
+                                                </div>
+                                                <label class="pedirDatos">Teléfono</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" name="telefono" required>
+                                                </div>
+                                                <label class="pedirDatos">Domicilio</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" name="domicilio" required>
+                                                </div>
+                                                <label class="pedirDatos">Mail</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="email" class="form-control" name="email" required>
+                                                </div>
+                                                <label class="pedirDatos">Cree una clave</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="password" class="form-control" name="clave1" required>
+                                                </div>
+                                                <label class="pedirDatos">Verifique la clave</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="password" class="form-control" name="clave2" required>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="col-6">
+
+                                                <img src="img/hombreConMascota.png">
+                                                <div style="text-align: center;">
+                                                    <br>
+                                                    <button style="position: relative; margin-top: 4px;" class="btn btn-primary" type="submit">REGISTRARME</button>
+                                                    <br>
+                                                        <button style="position: relative; margin: 2px;" class="btn btn-secondary" th:href="@{index}" type="button">Inicio</button>
+                                                </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <footer class="d-flex align-items-center">
+                                    <p>Copyright@Cyber Medical Pet</p>
+                                </footer>
+
+                        </body>
+                        </html>

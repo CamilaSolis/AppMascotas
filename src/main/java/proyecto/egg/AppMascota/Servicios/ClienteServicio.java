@@ -110,9 +110,10 @@ public class ClienteServicio implements UserDetailsService{
     
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<Cliente> cliente = clienteRepositorio.findById(email);
+        Cliente cliente = clienteRepositorio.buscarPorMail(email);
+        System.out.println("jkdbsaf;jalsdgn");
         if (cliente != null) {
-            System.out.println(" email: " + cliente.get().getEmail() + " + clave1 " + cliente.get().getClave1());
+            System.out.println(" email: " + cliente.getEmail() + " + clave1 " + cliente.getClave1());
             List<GrantedAuthority> permisos = new ArrayList<>();
             
             GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_CLIENTE_REGISTRADO");
@@ -122,7 +123,7 @@ public class ClienteServicio implements UserDetailsService{
             HttpSession session = attr.getRequest().getSession(true);
             session.setAttribute("clientesession", cliente);
             
-            User user = new User(cliente.get().getEmail(), cliente.get().getClave1(), permisos);
+            User user = new User(cliente.getEmail(), cliente.getClave1(), permisos);
             return user;
         } else {
             return null;
