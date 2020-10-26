@@ -1,7 +1,7 @@
 package proyecto.egg.AppMascota.Controladores;
 
-
-import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -26,19 +26,33 @@ public class MascotaControlador {
         return "crearMascota.html";
     }
 
-    @PostMapping("/crearMascota")
-    public String crearMascota(ModelMap model, @RequestParam String nombre, @RequestParam String raza, @RequestParam Date fechaNacimiento) throws ErrorServicio {
+    @PostMapping("/registroMascota")
+    public String crearMascota(
+            ModelMap model, 
+            @RequestParam String nombre, 
+            @RequestParam String raza, 
+            @RequestParam String fechaNacimiento
+    ) {
 
         try {
-            mascotaServicio.registroMascota(nombre, raza, fechaNacimiento);
+            //        try {
+            mascotaServicio.crearMascota(nombre, raza,fechaNacimiento );
         } catch (ErrorServicio ex) {
-            model.put("error", ex.getMessage());
-            model.put("nombre", nombre);
-            model.put("raza", raza);
-            model.put("fechaNacimiento", fechaNacimiento);
-            return "crearMacota.html";
+            Logger.getLogger(MascotaControlador.class.getName()).log(Level.SEVERE, null, ex);
         }
+//        } catch (ErrorServicio ex) {
+//            model.put("error", ex.getMessage());
+//            model.put("nombre", nombre);
+//            model.put("raza", raza);
+//            model.put("fechaNacimiento", fechaNacimiento);
+//            return "crearMascota.html";
+//        }
         model.put("titulo", "Se creó la mascota");
-        return "exito";
+        return "exito.html";
+    }
+    
+    @GetMapping("/test")
+    public String test(){
+        return "exito.html";
     }
 }

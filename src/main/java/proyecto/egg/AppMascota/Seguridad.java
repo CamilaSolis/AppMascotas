@@ -1,4 +1,3 @@
-
 package proyecto.egg.AppMascota;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,27 +10,33 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import proyecto.egg.AppMascota.Servicios.ClienteServicio;
+import proyecto.egg.AppMascota.Servicios.VeterinarioServicio;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class Seguridad extends WebSecurityConfigurerAdapter{
-    
+public class Seguridad extends WebSecurityConfigurerAdapter {
+
     @Autowired
     @Qualifier("clienteServicio")
     public ClienteServicio clienteServicio;
-    
-     @Autowired
+
+    @Autowired
+    @Qualifier("veterinarioServicio")
+    public VeterinarioServicio veterinarioServicio;
+
+    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-       auth.userDetailsService(clienteServicio).passwordEncoder(new BCryptPasswordEncoder());
+        auth.userDetailsService(clienteServicio).passwordEncoder(new BCryptPasswordEncoder())
+                .and().userDetailsService(veterinarioServicio).passwordEncoder(new BCryptPasswordEncoder());
     }
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests().antMatchers("/css/*", "/js/*", "/img/*", "/**")
-              .permitAll()
-              .and()
+                .permitAll()
+                .and()
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/logincheck")
@@ -40,12 +45,20 @@ public class Seguridad extends WebSecurityConfigurerAdapter{
                 .defaultSuccessUrl("/panelUsuario")
                 .failureUrl("/login?error=error")
                 .permitAll()
-              .and().logout()
+                .and()
+                .formLogin()
+                .loginPage("/vetlogin")
+                .loginProcessingUrl("/vetlogincheck")
+                .usernameParameter("matricula")
+                .passwordParameter("clave1")
+                .defaultSuccessUrl("/panelUsuario")
+                .failureUrl("/vetlogin?error=error")
+                .permitAll()
+                .and().logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
                 .permitAll().and().csrf().disable();
-        
-       
+
     }
-    
+
 }
