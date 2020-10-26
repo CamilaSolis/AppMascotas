@@ -1,5 +1,5 @@
 *{
-  margin: 0;
+  margin: 3px;
   padding: 0;
 }
 body{
@@ -16,6 +16,7 @@ header img{
   display: block;
   margin: 0 auto;
 }
+
 .col-6{
     position: relative;
     margin: auto;
