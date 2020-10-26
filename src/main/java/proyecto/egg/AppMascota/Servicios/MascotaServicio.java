@@ -5,10 +5,32 @@
  */
 package proyecto.egg.AppMascota.Servicios;
 
+import java.util.Date;
+import javax.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import proyecto.egg.AppMascota.Entidades.Mascota;
+import proyecto.egg.AppMascota.Errores.ErrorServicio;
+import proyecto.egg.AppMascota.Repositorios.MascotaRepositorio;
+
 /**
  *
  * @author Pablo
  */
 public class MascotaServicio {
-    
+
+    @Autowired
+    private MascotaRepositorio mascotaRepositorio;
+
+    @Transactional
+    public void registroMascota(String nombre, String raza, Date fechaNacimiento) throws ErrorServicio {
+//        validar(nombre, raza,fechaNacimiento);
+        Mascota mascota = new Mascota();
+        mascota.setNombre(nombre);
+        mascota.setRaza(raza);
+        mascota.setFechaNacimiento(fechaNacimiento);
+
+        mascotaRepositorio.save(mascota);
+    }
 }
+
+
