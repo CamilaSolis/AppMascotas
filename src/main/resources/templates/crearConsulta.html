@@ -1,100 +1,86 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="es">
+    <head>
+        <title>CrearConsulta | Cyber Medical Pet</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<head>
-    <title>CrearConsulta | Cyber Medical Pet</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <!-- CSS PRINCIPAL (HEADER Y FOOTER) -->
+        <link rel="stylesheet" type="text/css" href="./../static/css/styles.css">
 
-    <!-- CSS PRINCIPAL (HEADER Y FOOTER) -->
-    <link rel="stylesheet" type="text/css" href="./../static/css/styles.css">
+        <!-- CSS LOCAL -->
 
-    <!-- CSS LOCAL -->
+    </head>
 
-</head>
-
-<body>
-    <header class="d-flex align-items-center">
-        <img src="./../static/img/logo-blanco.png">
-    </header>
-    <div style="text-align: center">
-        <br>
-        <h3 class="titulo" style="margin-top: 20px;">Ingresá la consulta</h3>
-        <h5 style="margin-top: 20px;">Completá los campos requeridos para registrar la consulta</h5>
-    </div>
-    <br>
-    <div style="margin-left: 10px">
-        <div class="row">
-            <div class="col-6">
-
-                <form action="/veterinario/crearConsulta" method="post">
-                    <label class="pedirDatos">Fecha de la consulta</label>
-                    <div class="input-group mb-3">
-                        <input type="date" class="form-control" name="fecha" required>
-                    </div>
-                    <label class="pedirDatos">Valor de la consulta</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="precio" required>
-                    </div>
-                    <label class="pedirDatos">Veterinario</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="veterinario" required>
-                    </div>
-                    <label class="pedirDatos">Cliente</label>
-                    <div class="input-group mb-3">
-                        <input type="search" name="buscarCliente" class="form-control" required>
-                        <input type="submit" value="Buscar" class="pedirDatos" style="border-radius: 3px;">
-
-                    </div>
-                </form>
-            </div>
-            <div class="col-6">
-
-                <label class="pedirDatos">Nombre de la mascota</label>
-                <div class="input-group mb-3">
-                    <select class="form-control" id="mascotas">
-                        <option>Mascota 1</option>
-                        <option>Mascota 2</option>
-                        <option>Mascota 3</option>
-                    </select>
-                </div>
-                <label class="pedirDatos">Peso de la mascota</label>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="peso" required>
-                </div>
-                <label class="pedirDatos">Motivo de la consulta</label>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="motivo" required>
-                </div>
-                <label class="pedirDatos">Observaciones</label>
-                <div class="input-group mb-3">
-                    <textarea class="form-control" name="observaciones" rows="4" cols="40" placeholder="Ingrese descripción de la consulta..."></textarea>
-                </div>
-            </div>
-
-
-
+    <body>
+        <header class="d-flex align-items-center">
+            <img src="./../static/img/logo-blanco.png">
+        </header>
+        <div style="text-align: center">
+            <h3 class="titulo mt-4" style="margin-top: 20px;">Ingresá la consulta</h3>
+            <h5 style="margin-top: 20px;">Completá los campos requeridos para registrar la consulta</h5>
         </div>
-
-    </div>
-    <div style="text-align: center;">
-        <br>
-        <button style="position: relative; margin-top: 4px;" class="btn btn-primary" type="submit">REGISTRAR
-            MASCOTA</button>
-        <br>
-        <button style="position: relative; margin: 4px;" class="btn btn-secondary" href="index.html"
-            type="button">Inicio</button>
-    </div>
-
-    </div>
-
-    <footer class="d-flex align-items-center">
-        <p>Copyright@Cyber Medical Pet</p>
-    </footer>
-
-</body>
+        <div class="mt-4 ml-3">
+            <div class="row">
+                <div class="col-6">
+                    <form action="/veterinario/crearConsulta" method="post">
+                        <label class="pedirDatos">Fecha de la consulta</label>
+                        <div class="input-group mb-3">
+                            <input type="date" class="form-control" name="fecha" required>
+                        </div>
+                        <label class="pedirDatos">Valor de la consulta</label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="precio" required>
+                        </div>
+                        <label class="pedirDatos">Veterinario</label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="veterinario" required>
+                        </div>
+                        <label class="pedirDatos">Cliente</label>
+                        <div class="input-group mb-3">
+                            <input type="search" name="buscarCliente" class="form-control" required>
+                            <input type="submit" value="Buscar" class="pedirDatos" style="border-radius: 3px;">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-6">
+                    <label class="pedirDatos">Nombre de la mascota</label>
+                    <div class="input-group mb-3">
+                        <select class="form-control" id="mascotas">
+                            <option>Mascota 1</option>
+                            <option>Mascota 2</option>
+                            <option>Mascota 3</option>
+                        </select>
+                    </div>
+                    <label class="pedirDatos">Peso de la mascota</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="peso" required>
+                    </div>
+                    <label class="pedirDatos">Motivo de la consulta</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="motivo" required>
+                    </div>
+                    <label class="pedirDatos">Observaciones</label>
+                    <div class="input-group mb-3">
+                        <textarea class="form-control" name="observaciones" rows="4" cols="40" placeholder="Ingrese descripción de la consulta..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <br>
+            <button style="position: relative; margin-top: 4px;" class="btn btn-primary" type="submit">REGISTRAR
+                MASCOTA</button>
+            <br>
+            <button style="position: relative; margin: 4px;" class="btn btn-secondary" href="index.html"
+                type="button">Inicio</button>
+        </div>
+        <footer class="d-flex align-items-center">
+            <p>Copyright@Cyber Medical Pet</p>
+        </footer>
+    </body>
 
 </html>
