@@ -62,6 +62,11 @@ public class Mascota {
     public void setHistoriaClinica(List<Consulta> historiaClinica) {
         this.historiaClinica = historiaClinica;
     }
+
+    @Override
+    public String toString() {
+        return "Mascota{" + "nombre=" + nombre + ", id=" + id + ", raza=" + raza + ", fechaNacimiento=" + fechaNacimiento + ", historiaClinica=" + historiaClinica + '}';
+    }
     
     
     

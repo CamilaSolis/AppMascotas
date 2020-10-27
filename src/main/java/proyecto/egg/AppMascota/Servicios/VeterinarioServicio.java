@@ -39,11 +39,11 @@ public class VeterinarioServicio implements UserDetailsService {
         veterinario.setMatricula(matricula);
         veterinario.setNombreClinica(nombreClinica);
         veterinario.setZona(zona);
-
-//        String encriptada = new BCryptPasswordEncoder().encode(password1);
-//        veterinario.setPassword1(encriptada);
-//        String encriptada2 = new BCryptPasswordEncoder().encode(password2);
-//        veterinario.setPassword2(encriptada2);
+        System.out.println("Pass 1: "+password1);
+        String encriptada = new BCryptPasswordEncoder().encode(password1);
+        veterinario.setPassword1(encriptada);
+        System.out.println("Encriptada: " + encriptada);
+//       
         veterinarioRepositorio.save(veterinario);
 
     }
@@ -111,8 +111,8 @@ public class VeterinarioServicio implements UserDetailsService {
 
             List<GrantedAuthority> permisos = new ArrayList<>();
 
-            GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_CLIENTE_REGISTRADO");
-            permisos.add(p1);
+            GrantedAuthority v1 = new SimpleGrantedAuthority("ROLE_VETERINARIO_REGISTRADO");
+            permisos.add(v1);
 
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
             HttpSession session = attr.getRequest().getSession(true);
