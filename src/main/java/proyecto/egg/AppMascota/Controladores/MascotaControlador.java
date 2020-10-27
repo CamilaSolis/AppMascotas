@@ -1,7 +1,5 @@
 package proyecto.egg.AppMascota.Controladores;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -32,21 +30,15 @@ public class MascotaControlador {
             @RequestParam String nombre, 
             @RequestParam String raza, 
             @RequestParam String fechaNacimiento
-    ) {
-
-        try {
-            //        try {
-            mascotaServicio.crearMascota(nombre, raza,fechaNacimiento );
-        } catch (ErrorServicio ex) {
-            Logger.getLogger(MascotaControlador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-//        } catch (ErrorServicio ex) {
-//            model.put("error", ex.getMessage());
-//            model.put("nombre", nombre);
-//            model.put("raza", raza);
-//            model.put("fechaNacimiento", fechaNacimiento);
-//            return "crearMascota.html";
-//        }
+            
+    ) throws ErrorServicio {
+        mascotaServicio.registroMascota(nombre, raza,fechaNacimiento );
+              try{
+        }catch (ErrorServicio ex){
+            model.put("nombre", nombre);
+            model.put("raza", raza);
+            model.put("fecha nacimiento", fechaNacimiento);
+            return "crearmascota.html";
         model.put("titulo", "Se creó la mascota");
         return "exito.html";
     }
@@ -55,4 +47,5 @@ public class MascotaControlador {
     public String test(){
         return "exito.html";
     }
-}
+
+    }
