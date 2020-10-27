@@ -25,9 +25,10 @@
                             <br>
                                 <div style="margin-left: 10px">
                                     <div class="row">
-                                        <div class="col-6">
 
+                                        <div class="col-6">
                                             <form action="/mascota/registroMascota" method="POST">
+
                                                 <label class="pedirDatos">Nombre</label>
                                                 <div class="input-group mb-3">
                                                     <input type="text" class="form-control" name="nombre" required>
@@ -40,22 +41,21 @@
                                                 <div class="input-group mb-3">
                                                     <input type="date" class="form-control" name="fechaNacimiento" required>
                                                 </div>
-                                                <br>
-                                                    <input type="submit" value="Enviar Datos" />
-                                                    <!--<button style="position: relative; margin-top: 4px;" class="btn btn-primary" type="submit">REGISTRAR MASCOTA</button>-->
+                                                <button style="position: relative; margin-top: 4px;" class="btn btn-primary" type="submit">REGISTRAR MASCOTA</button>
+
                                             </form>
                                         </div>
-                                        <div class="col-6">
 
-                                            <img src="/img/MASCOTAS IMG.png" style="width: 90%;height: 90%;">
+                                            <div class="col-6">
 
-                                        </div>
+                                                <img src="/img/MASCOTAS IMG.png" style="width: 90%;height: 90%;">
+
+                                            </div>
 
                                     </div>
-                                    <div style="text-align: center;">
+                                    <div>
 
-                                        <br>
-                                            <button style="position: relative; margin: 4px;" class="btn btn-secondary" href="index.html" type="button">Inicio</button>
+                                            <a style="position: relative; margin: 4px;" class="btn btn-secondary" th:href="@{/}" type="button">Inicio</a>
                                     </div>
 
                                 </div>
