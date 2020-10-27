@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="es">
+<<<<<<< HEAD
     <head>
   <title>CrearVeterinario | Cyber Medical Pet</title>
   <meta charset="utf-8">
@@ -8,59 +9,54 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-  <!-- CSS PRINCIPAL (HEADER Y FOOTER) -->
-  <link rel="stylesheet" type="text/css" href="/css/styles.css">
 
-  <!-- CSS LOCAL -->
+    <!-- CSS PRINCIPAL (HEADER Y FOOTER) -->
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
 
-</head>
-<body>
-  <header class="d-flex align-items-center">
-    <img src="img/logo-blanco.png">
-  </header>
+  </head>
+  <body>
+    <header class="d-flex align-items-center">
+      <img src="img/logo-blanco.png">
+    </header>
 
-<strong><p align="center">Accede a nuestros servicios como Veterinario</p></strong>
+    <strong><p align="center">Accede a nuestros servicios como Veterinario</p></strong>
 
-<img align="left" src="/img/Vete_4.jpg" alt="Vete 4 " width="500" height="500" />
-<img align="right" src="/img/Vete_6.jpg" alt="Vete 6 " width="500" height="500" />
+    <img align="left" src="/img/Vete_4.jpg" alt="Vete 4 " width="500" height="auto" />
+    <img align="right" src="/img/Vete_6.jpg" alt="Vete 6 " width="500" height="auto" />
 
-<form action="/veterinario/registroVeterinario" method="post" class="text-center">
-<fieldset>
-<legend><strong>REGITRO DE VETERINARIO</strong></legend>
-<strong>Ingrese la Matricula del Veterinario</strong><br/>
-<p><input type="text" name="matricula" required size="40"/></p>
-<br/>
-<strong>Ingrese el Nombre del Veterinario</strong><br/>
-<p><input type="text" name="nombre" required size="40"/></p>
-<br/>
-<strong>Ingrese el Nombre de la Clinica del Veterinario</strong><br/>
-<p><input type="text" name="nombreClinica" required size="40"/></p>
-<br/>
-<p><strong>Ingrese Zona del Veterinario</strong><br/>
-<select name="zona">
-   <option value="1">Santiago</option> 
-   <option value="2">Renca</option> 
-   <option value="3">Las Condes</option>
-   <option value="10">Huechuraba</option> 
- </select>
-</p>
-<br/>
-<strong>Ingrese su Password</strong><br/>
-<p><input type="password" name="password1" placeholder="Elige password fuerte"></p>
-</select>
-<br/>
-<strong>Repita su Password</strong><br/>
-<p><input type="password" name="password2" placeholder="Elige password fuerte"></p>
-</select>
-</fieldset>
-<input type="submit" value="Enviar Datos" />
-<input type="reset" value="Borrar">
-</legend>
-</form>
-</section>
+    <form action="/veterinario/registroVeterinario" method="post" class="text-center">
+      <fieldset>
+        <legend><strong>REGITRO DE VETERINARIO</strong></legend>
+        <strong>Ingrese la Matricula del Veterinario</strong><br/>
+        <p><input type="text" name="matricula" required size="40"/></p>
+        <br/>
+        <strong>Ingrese el Nombre del Veterinario</strong><br/>
+        <p><input type="text" name="nombre" required size="40"/></p>
+        <br/>
+        <strong>Ingrese el Nombre de la Clinica del Veterinario</strong><br/>
+        <p><input type="text" name="nombreClinica" required size="40"/></p>
+        <br/>
+        <p><strong>Ingrese Zona del Veterinario</strong><br/>
+          <select name="zona">
+            <option value="1">Santiago</option> 
+            <option value="2">Renca</option> 
+            <option value="3">Las Condes</option>
+            <option value="10">Huechuraba</option> 
+          </select>
+        </p>
+        <br/>
+        <strong>Ingrese su Password</strong><br/>
+        <p><input type="password" name="password1" placeholder="Elige password fuerte"></p>
+        <br/>
+        <strong>Repita su Password</strong><br/>
+        <p><input type="password" name="password2" placeholder="Elige password fuerte"></p>
+      </fieldset>
+      <input type="submit" value="Enviar Datos" />
+      <input type="reset" value="Borrar" />
+      </legend>
+    </form>
   <footer class="d-flex align-items-center">
     <p>Copyright</p>
   </footer>
-
 </body>
 </html>
