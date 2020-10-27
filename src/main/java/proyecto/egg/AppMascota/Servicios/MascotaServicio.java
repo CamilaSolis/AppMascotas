@@ -5,9 +5,17 @@
  */
 package proyecto.egg.AppMascota.Servicios;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Optional;
+import java.util.logging.Level;
 import javax.transaction.Transactional;
+import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import proyecto.egg.AppMascota.Entidades.Mascota;
 import proyecto.egg.AppMascota.Errores.ErrorServicio;
@@ -24,23 +32,81 @@ public class MascotaServicio {
     private MascotaRepositorio mascotaRepositorio;
 
     @Transactional
-    public void crearMascota(String nombre, String raza, String fechaNacimiento) throws ErrorServicio {
+    public void registroMascota(String nombre, String raza, String fechaNacimiento) throws ErrorServicio {
 //        validar(nombre, raza,fechaNacimiento);
 
-        Date fecha = new Date();
-        Mascota mascota = new Mascota();
+       
+        Mascota mascota;
+        mascota = new Mascota();
         mascota.setNombre(nombre);
         mascota.setRaza(raza);
-        mascota.setFechaNacimiento(fecha);
+        mascota.setFechaNacimiento(fechaNacimiento);
 
         System.out.println(mascota.toString());
         
         if(false){
-            throw new ErrorServicio("asd");
+            throw new ErrorServicio("Comletar todos los campos");
         }
         
         mascotaRepositorio.save(mascota);
     }
+    
+    public void validation(String nombre, String raza, Date fechaNacimiento) throws ErrorServicio {
+        
+        if (nombre == null || nombre.isEmpty()) {
+            throw new ErrorServicio("Completar nombre");
+        }
+        
+          if (raza == null || raza.isEmpty()) {
+            throw new ErrorServicio("Completar raza");
+            
+        } 
+        if (fechaNacimiento == null || fechaNacimiento.isEmpty()) {
+            throw new ErrorServicio("Completar fecha nacimiento");
+        }
+        
+    }
+    
+       @Transactional
+    public void modificaciónMascota(String nombre, String ID, String raza, Date fechaNacimiento) throws ErrorServicio{
+        validar(nombre, raza, fechaNacimiento);
+        Optional<Mascota> respuesta = MascotaRepositorio.findByName(nombre);
+        if(respuesta.isPresent()){
+            Mascota mascota = respuesta.get();
+        mascota.setNombre(nombre);
+        mascota.setRaza(raza);
+        mascota.setFechaNacimiento(fechaNacimiento);
+        mascotaRepositorio.save(mascota);
+        }else{
+            throw new ErrorServicio("La mascota no existe");
+        }
+    }
+    
+     public Mascota getMascota(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Mascota m = mascotaRepositorio.findByName(auth.getName());
+        return m;
+    }
+    
+    public Date convertirDate() {
+        
+        try {
+            DateFormat fechaNacimiento = new SimpleDateFormat("yyyy-MM-dd");
+            Date convertido = fechaNacimiento.parse(fechaNacimiento);
+            
+            return convertido;
+        } catch (ParseException ex) {
+            Logger.getLogger(MascotaServicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+     
+     
+     
+     
 }
+
+
+
 
 
