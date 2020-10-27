@@ -1,22 +1,34 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="es">
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-         <main role="main">
+        <title>CrearConsulta | Cyber Medical Pet</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-                                <!-- Main jumbotron for a primary marketing message or call to action -->
-                                <div class="jumbotron">
-                                    <div class="container">
-                                        <h1 class="display-3">Acceso para veterinarios</h1>
-                                        <h2 class="display-4" > Bienvenido a tu panel!  </h2>
-                                        <h2 th:text ="${'Hola !!!'}"></h2>
+        <!-- CSS PRINCIPAL (HEADER Y FOOTER) -->
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+    </head>
+
+    <body>
+        <header class="d-flex align-items-center">
+            <img src="/img/logo-blanco.png">
+        </header>
+        <main role="main">
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="display-3">Acceso para veterinarios</h1>
+                <h2 class="display-4" > Bienvenido a tu panel!  </h2>
+                <h2 th:text ="${'Hola !!!'}"></h2>
 <!--                                   + session.usuariosession.nombre +-->
-                                    </div>
-                                    
-                                </div> 
+            </div>                            
+        </div> 
+        <footer class="d-flex align-items-center">
+            <p>Copyright@Cyber Medical Pet</p>
+        </footer>
     </body>
 </html>

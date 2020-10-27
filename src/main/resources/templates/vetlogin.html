@@ -1,39 +1,47 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="es">
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CrearConsulta | Cyber Medical Pet</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <!-- CSS PRINCIPAL (HEADER Y FOOTER) -->
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+        <!-- CSS LOCAL -->
+
     </head>
+
     <body>
-       <h1>Cyber Medical Pet</h1>
-                        <br>
-                            <h3> Hola veterinario!  </h3>
-                            <h3> Ingresá con tu matrícula y contraseña! </h3>
-                            <section> 
+        <header class="d-flex align-items-center">
+            <img src="/img/logo-blanco.png">
+        </header>
+        <br>
+        <h3> Hola veterinario!  </h3>
+        <h3> Ingresá con tu matrícula y contraseña! </h3>
+        <section> 
                                 
-                                <form action="/vetlogincheck" method="POST">
-                                    <div class="form-group" >
-                                        <p th:if="${error != null}" th:text="${error}" style="color:red"></p>
-                                        <p th:if="${logout != null}" th:text="${logout}" style="color:green"></p>
-                                        
-                                        <label>Decinos tu matricula</label>    
-                                        <input type="text" id="m" class="form-control" name="matricula" required placeholder="matricula">
-                                        
-
-                                        <label for="contraseña">Contraseña</label>
-                                        <input type="password" class="form-control" id="clave1" name="password1">
-                                        <small id="claveHelp" class="form-text text-muted">Mínimo 6 caracteres, 1 MAYÚSCULA y 1 número! .</small>
-
-                                        <div class="form-group form-check">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                            <label class="form-check-label" for="exampleCheck1">Recordar mi email</label>
-
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Ingresar</button>
-                                 </div> 
-
-                                </form>
-
+        <form action="/vetlogincheck" method="POST">
+            <div class="form-group" >
+                <p th:if="${error != null}" th:text="${error}" style="color:red"></p>
+                <p th:if="${logout != null}" th:text="${logout}" style="color:green"></p>
+                <label>Decinos tu matricula</label>    
+                <input type="text" id="m" class="form-control" name="matricula" required placeholder="matricula">
+                <label for="contraseña">Contraseña</label>
+                <input type="password" class="form-control" id="clave1" name="password1">
+                <small id="claveHelp" class="form-text text-muted">Mínimo 6 caracteres, 1 MAYÚSCULA y 1 número! .</small>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Recordar mi email</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Ingresar</button>
+            </div> 
+        </form>
+        <footer class="d-flex align-items-center">
+            <p>Copyright@Cyber Medical Pet</p>
+        </footer>
     </body>
 </html>
