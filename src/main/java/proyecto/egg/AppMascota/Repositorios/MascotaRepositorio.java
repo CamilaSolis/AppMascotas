@@ -11,5 +11,7 @@ import proyecto.egg.AppMascota.Entidades.Mascota;
 
 @Repository
 public interface MascotaRepositorio extends JpaRepository<Mascota,String> {
+
+    public Mascota findByName(String name);
     
 }
