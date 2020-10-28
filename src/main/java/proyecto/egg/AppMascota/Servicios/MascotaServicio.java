@@ -9,14 +9,17 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import java.util.List;
 import java.util.Optional;
-import java.util.logging.Level;
+
 import javax.transaction.Transactional;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import proyecto.egg.AppMascota.Entidades.Consulta;
 import proyecto.egg.AppMascota.Entidades.Mascota;
 import proyecto.egg.AppMascota.Errores.ErrorServicio;
 import proyecto.egg.AppMascota.Repositorios.MascotaRepositorio;
@@ -68,26 +71,27 @@ public class MascotaServicio {
         
     }
     
-       @Transactional
-    public void modificaciónMascota(String nombre, String ID, String raza, String sexo) throws ErrorServicio{
-        validation(nombre, raza, sexo);
-        Optional<Mascota> respuesta = MascotaRepositorio.findByName(nombre);
-        if(respuesta.isPresent()){
-            Mascota mascota = respuesta.get();
-        mascota.setNombre(nombre);
-        mascota.setRaza(raza);
-        mascota.setSexo(sexo);
-        mascotaRepositorio.save(mascota);
-        }else{
-            throw new ErrorServicio("La mascota no existe");
-        }
-    }
+//       @Transactional
+//    public void modificaciónMascota(String nombre, String ID, String raza, String sexo) throws ErrorServicio{
+//        validation(nombre, raza, sexo);
+//        Optional<Mascota> respuesta = MascotaRepositorio.findById(ID);
+//        if(respuesta != null){
+//            Mascota mascota = respuesta;
+//        mascota.setNombre(nombre);
+//        mascota.setRaza(raza);
+//        mascota.setSexo(sexo);
+//        mascotaRepositorio.save(mascota);
+//        }else{
+//            throw new ErrorServicio("La mascota no existe");
+//        }
+//    }
+
     
-     public Mascota getMascota(){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Mascota m = mascotaRepositorio.findByName(auth.getName());
-        return m;
-    }
+//     public Mascota getMascota(){
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        Mascota m = mascotaRepositorio.findByName(auth.getName());
+//        return m;
+//    }
     
 //    public Date convertirDate(String fecha) {
 //        
@@ -104,9 +108,18 @@ public class MascotaServicio {
      
      
      
-     
-}
 
+    public List<Consulta> historia_clinica(String Id) throws ErrorServicio{
+        Optional<Mascota> mascota = mascotaRepositorio.findById(Id);
+        
+        if (mascota.isPresent()){
+            List<Consulta> consultas = mascota.get().getHistoriaClinica();
+            return consultas;
+        }else{
+            throw new ErrorServicio("No se encontro la lista de consultas");
+        } 
+    }
+}
 
 
 
