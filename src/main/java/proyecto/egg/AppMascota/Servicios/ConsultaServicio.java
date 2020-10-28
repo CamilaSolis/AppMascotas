@@ -35,7 +35,7 @@ public class ConsultaServicio implements UserDetailsService{
         Consulta consulta = new Consulta();
         
         Date fecha = Calendar.getInstance().getTime();
-        consulta.setFecha(fecha);
+        consulta.setFecha("fecha");
         
         consulta.setMotivo(motivo);
         consulta.setPrecio(precio);

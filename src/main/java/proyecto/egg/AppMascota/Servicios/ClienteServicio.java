@@ -52,7 +52,7 @@ public class ClienteServicio implements UserDetailsService {
         Optional<Cliente> respuesta = clienteRepositorio.findById(documento);
         if (respuesta.isPresent()) {
             Cliente cliente = respuesta.get();
-            cliente.setBaja(new Date());
+            cliente.setBaja("baja");
             clienteRepositorio.save(cliente);
         } else {
             throw new ErrorServicio("No se encontró un cliente con ese id");
