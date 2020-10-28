@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import proyecto.egg.AppMascota.Entidades.Cliente;
+import proyecto.egg.AppMascota.Entidades.Mascota;
 import proyecto.egg.AppMascota.Errores.ErrorServicio;
 import proyecto.egg.AppMascota.Repositorios.ClienteRepositorio;
 
@@ -77,6 +78,7 @@ public class ClienteServicio implements UserDetailsService {
             throw new ErrorServicio("No se encontró el cliente");
         }
     }
+  
 
     public void validar(String nombre, String documento, String telefono, String email, String domicilio, String clave1, String clave2) throws ErrorServicio {
 
