@@ -21,43 +21,33 @@ public class Seguridad extends WebSecurityConfigurerAdapter {
     @Qualifier("clienteServicio")
     public ClienteServicio clienteServicio;
 
-    @Autowired
-    @Qualifier("veterinarioServicio")
-    public VeterinarioServicio veterinarioServicio;
+ 
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(clienteServicio).passwordEncoder(new BCryptPasswordEncoder())
-                .and().userDetailsService(veterinarioServicio).passwordEncoder(new BCryptPasswordEncoder());
+        auth.userDetailsService(clienteServicio).passwordEncoder(new BCryptPasswordEncoder());
     }
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests().antMatchers("/css/*", "/js/*", "/img/*", "/**")
-                .permitAll()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .loginProcessingUrl("/logincheck")
-                .usernameParameter("email")
-                .passwordParameter("clave1")
-                .defaultSuccessUrl("/panelUsuario")
-                .failureUrl("/login?error=error")
-                .permitAll()
-                .and()
-                .formLogin()
-                .loginPage("/vetlogin")
-                .loginProcessingUrl("/vetlogincheck")
-                .usernameParameter("matricula")
-                .passwordParameter("password1")
-                .defaultSuccessUrl("/panelVeterinario")
-                .failureUrl("/vetlogin?error=error")
-                .permitAll()
-                .and().logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/")
-                .permitAll().and().csrf().disable();
+       http
+			.authorizeRequests()
+
+				.antMatchers("/css/", "/js/", "/img/", "/*").permitAll()
+				.and().formLogin()
+					.loginPage("/login")
+						.loginProcessingUrl("/logincheck")
+						.usernameParameter("emailmatricula")
+						.passwordParameter("clave1")
+						.defaultSuccessUrl("/middleware")
+						.failureUrl("/login?error=error")
+						.permitAll()
+				.and().logout()
+					.logoutUrl("/logout")
+					.logoutSuccessUrl("/buscador")
+					.permitAll()
+				.and().csrf()
+					.disable();
 
     }
 

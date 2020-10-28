@@ -52,7 +52,7 @@ public class ClienteServicio implements UserDetailsService {
         Optional<Cliente> respuesta = clienteRepositorio.findById(documento);
         if (respuesta.isPresent()) {
             Cliente cliente = respuesta.get();
-            cliente.setBaja(new Date());
+            cliente.setBaja("baja");
             clienteRepositorio.save(cliente);
         } else {
             throw new ErrorServicio("No se encontró un cliente con ese id");
@@ -109,8 +109,8 @@ public class ClienteServicio implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Cliente cliente = clienteRepositorio.buscarPorMail(email);
+    public UserDetails loadUserByUsername(String emailmatricula) throws UsernameNotFoundException {
+        Cliente cliente = clienteRepositorio.buscarPorMail(emailmatricula);
         System.out.println("jkdbsaf;jalsdgn");
 
         if (cliente != null) {
@@ -127,7 +127,7 @@ public class ClienteServicio implements UserDetailsService {
             User user = new User(cliente.getEmail(), cliente.getClave1(), permisos);
             return user;
         } else {
-            return veterinarioServicio.loadUserByUsername(email);
+            return veterinarioServicio.loadUserByUsername(emailmatricula);
         }
     }
 

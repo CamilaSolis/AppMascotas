@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="es">
     <head>
-        <title>CrearMascota | Cyber Medical Pet</title>
+        <title>EliminarCliente| Cyber Medical Pet</title>
         <meta charset="utf-8">
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,27 +19,27 @@
         </header>
         <div style="text-align: center">
             <br>
-            <h3 class="titulo" style="margin-top: 20px;">Cargá los datos de tu mascota</h3>
+            <h3 class="titulo" style="margin-top: 20px;">Lamentamos que no puedas formar más parte de nuestra app</h3>
         </div>
         <br>
         <div style="margin-left: 10px">
             <div class="row">
                 <div class="col-6">
                     <form action="/mascota/registroMascota" method="POST">
-                        <label class="pedirDatos">Nombre</label>
+                        <label class="pedirDatos">Ingrese su DNI</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="nombre" required>
+                            <input type="text" class="form-control" name="documento" required>
                         </div>
                         <label class="pedirDatos">Raza</label>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" name="raza" required>
                         </div>
-                        <label class="pedirDatos">Sexo</label>
+                        <label class="pedirDatos">Fecha de Nacimiento</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="sexo" required>
+                            <input type="date" class="form-control" name="fechaNacimiento" required>
                         </div>
                         <br>
-                             <button style="position: absolute; margin: 4px;" class="btn btn-primary" type="submit">REGISTRARME</button>
+                             <button style="position: absolute; margin: 4px;" class="btn btn-primary" type="">REGISTRARME</button>
                     </form>
                 </div>
                 <div class="col-6">

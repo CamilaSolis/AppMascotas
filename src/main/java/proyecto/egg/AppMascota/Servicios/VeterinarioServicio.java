@@ -101,8 +101,8 @@ public class VeterinarioServicio implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String matricula) throws UsernameNotFoundException {
-        Optional<Veterinario> veterinario = veterinarioRepositorio.findById(matricula);
+    public UserDetails loadUserByUsername(String emailmatricula) throws UsernameNotFoundException {
+        Optional<Veterinario> veterinario = veterinarioRepositorio.findById(emailmatricula);
         if (veterinario != null) {
 
             System.out.println(" matricula: " + veterinario.get().getMatricula() + " + password1 " + veterinario.get().getPassword1());

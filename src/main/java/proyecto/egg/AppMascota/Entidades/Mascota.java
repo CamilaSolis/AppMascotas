@@ -1,6 +1,6 @@
-
 package proyecto.egg.AppMascota.Entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -9,19 +9,30 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import org.hibernate.annotations.GenericGenerator;
 
+/**
+ *
+ * @author USUARIO1
+ */
 @Entity
-public class Mascota {
+public class Mascota implements Serializable {
+
     private String nombre;
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String raza;
-    private Date fechaNacimiento;
+    private String sexo;
     @OneToMany
     private List<Consulta> historiaClinica;
-    
-    
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
 
     public String getNombre() {
         return nombre;
@@ -47,14 +58,6 @@ public class Mascota {
         this.raza = raza;
     }
 
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
     public List<Consulta> getHistoriaClinica() {
         return historiaClinica;
     }
@@ -65,10 +68,7 @@ public class Mascota {
 
     @Override
     public String toString() {
-        return "Mascota{" + "nombre=" + nombre + ", id=" + id + ", raza=" + raza + ", fechaNacimiento=" + fechaNacimiento + ", historiaClinica=" + historiaClinica + '}';
+        return "Mascota{" + "nombre=" + nombre + ", id=" + id + ", raza=" + raza + ", sexo=" + sexo + ", historiaClinica=" + historiaClinica + '}';
     }
-    
-    
-    
-    
+
 }
