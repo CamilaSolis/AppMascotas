@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import proyecto.egg.AppMascota.Errores.ErrorServicio;
 import proyecto.egg.AppMascota.Servicios.MascotaServicio;
 
-
-
 @Controller
 @RequestMapping("/mascota")
 public class MascotaControlador {
@@ -20,32 +18,33 @@ public class MascotaControlador {
     private MascotaServicio mascotaServicio;
 
     @GetMapping("")
-    public String mascota(){
+    public String mascota() {
         return "crearMascota.html";
     }
 
     @PostMapping("/registroMascota")
     public String crearMascota(
-            ModelMap model, 
-            @RequestParam String nombre, 
-            @RequestParam String raza, 
-            @RequestParam String fechaNacimiento
-            
+            ModelMap model,
+            @RequestParam String nombre,
+            @RequestParam String raza,
+            @RequestParam String sexo
     ) throws ErrorServicio {
-        mascotaServicio.registroMascota(nombre, raza,fechaNacimiento );
-              try{
-        }catch (ErrorServicio ex){
+
+        try {
+            mascotaServicio.registroMascota(nombre, raza, sexo);
+        } catch (ErrorServicio ex) {
             model.put("nombre", nombre);
             model.put("raza", raza);
-            model.put("fecha nacimiento", fechaNacimiento);
+            model.put("sexo", sexo);
             return "crearmascota.html";
+        }
         model.put("titulo", "Se creó la mascota");
         return "exito.html";
     }
-    
+
     @GetMapping("/test")
-    public String test(){
+    public String test() {
         return "exito.html";
     }
 
-    }
+}

@@ -73,7 +73,6 @@ public class ConsultaServicio implements UserDetailsService{
             Consulta consulta = buscarConsulta.get();
             consulta.setMotivo(motivo);
             consulta.setPrecio(precio);
-            consulta.setPrecio(precio);
             consulta.setVacuna(vacuna);
             consulta.setCirujia(cirujia);
             consulta.setObservaciones(observaciones);

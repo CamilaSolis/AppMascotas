@@ -11,7 +11,7 @@
 	<groupId>proyecto.egg</groupId>
 	<artifactId>AppMascota</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>&lt;partially loaded Maven project&gt;</name>
+	<name>AppMascota</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
