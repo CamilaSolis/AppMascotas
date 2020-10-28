@@ -43,7 +43,7 @@ public class VeterinarioControlador {
     }
 
     @PostMapping("/crearConsulta")
-    public String crearConsulta(ModelMap model, @RequestParam String fecha, @RequestParam Integer precio, @RequestParam String matriculaVeterinario, @RequestParam String nombreMascota, @RequestParam String peso, @RequestParam String motivo, @RequestParam String observaciones) throws ErrorServicio {
+    public String crearConsulta(ModelMap model, @RequestParam Integer precio, @RequestParam String matriculaVeterinario, @RequestParam String nombreMascota, @RequestParam String peso, @RequestParam String motivo, @RequestParam String observaciones) throws ErrorServicio {
         try {
             consultaServicio.registrar(motivo, precio, peso, observaciones, matriculaVeterinario, nombreMascota);
 
