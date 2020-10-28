@@ -24,14 +24,14 @@
         <h3> Ingresá con tu matrícula y contraseña! </h3>
         <section> 
                                 
-        <form action="/vetlogincheck" method="POST">
+        <form action="/logincheck" method="POST">
             <div class="form-group" >
                 <p th:if="${error != null}" th:text="${error}" style="color:red"></p>
                 <p th:if="${logout != null}" th:text="${logout}" style="color:green"></p>
-                <label>Decinos tu matricula</label>    
-                <input type="text" id="m" class="form-control" name="matricula" required placeholder="matricula">
-                <label for="contraseña">Contraseña</label>
-                <input type="password" class="form-control" id="clave1" name="password1">
+                <label for="matriculaVet">Matricula</label>
+                <input type="text" class="form-control" name="emailmatricula" id="matriculaVet"  placeholder="Escriba su matricula">
+                <label for="passVet">Contraseña</label>
+                <input type="password" class="form-control" name="clave1" id="passVet" placeholder="Escriba su contraseña"> 
                 <small id="claveHelp" class="form-text text-muted">Mínimo 6 caracteres, 1 MAYÚSCULA y 1 número! .</small>
                 <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
