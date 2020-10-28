@@ -1,4 +1,3 @@
-
 package proyecto.egg.AppMascota.Controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,41 +10,59 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import proyecto.egg.AppMascota.Entidades.Veterinario;
 import proyecto.egg.AppMascota.Errores.ErrorServicio;
+import proyecto.egg.AppMascota.Servicios.ConsultaServicio;
 import proyecto.egg.AppMascota.Servicios.VeterinarioServicio;
-
 
 @Controller
 @RequestMapping("/veterinario")
 public class VeterinarioControlador {
-      
+
     @Autowired
     private VeterinarioServicio veterinarioServicio;
-    
+    @Autowired
+    private ConsultaServicio consultaServicio;
+
     @GetMapping("")
-    public String veterinario(){
+    public String veterinario() {
         return "veterinario.html";
     }
-  
-    
+
     @PostMapping("/registroVeterinario")
-    public String registroVeterinario (ModelMap model , ModelMap modelo, @RequestParam String nombre,@RequestParam String matricula,@RequestParam String nombreClinica, 
-        @RequestParam String zona, @RequestParam String password1, @RequestParam String password2) throws ErrorServicio{
-       
-        try{
-            veterinarioServicio.registroVeterinario(nombre, matricula, nombreClinica, zona, password1,password2);
-        } catch (ErrorServicio ex){
+    public String registroVeterinario(ModelMap model, ModelMap modelo, @RequestParam String nombre, @RequestParam String matricula, @RequestParam String nombreClinica,
+            @RequestParam String zona, @RequestParam String password1, @RequestParam String password2) throws ErrorServicio {
+
+        try {
+            veterinarioServicio.registroVeterinario(nombre, matricula, nombreClinica, zona, password1, password2);
+        } catch (ErrorServicio ex) {
             model.put("error", ex.getMessage());
             model.put("nombre", nombre);
             return "veterinario.html";
         }
         model.put("titulo", "Se creó el veterinario");
         return "exito";
-}
-    
-    
-    
-    
-    
+    }
+
+    @PostMapping("/crearConsulta")
+    public String crearConsulta(ModelMap model, @RequestParam String fecha, @RequestParam Integer precio, @RequestParam String matriculaVeterinario, @RequestParam String nombreMascota, @RequestParam String peso, @RequestParam String motivo, @RequestParam String observaciones) throws ErrorServicio {
+        try {
+            consultaServicio.registrar(motivo, precio, peso, observaciones, matriculaVeterinario, nombreMascota);
+
+        } catch (ErrorServicio ex) {
+            model.put("error", ex.getMessage());
+            model.put("motivo", motivo);
+            model.put("precio", precio);
+            model.put("peso", peso);
+            model.put("observaciones", observaciones);
+            model.put("matriculaVeterinario", matriculaVeterinario);
+            model.put("nombreMascota", nombreMascota);
+
+            return "crearConsulta.html";
+        }
+        model.put("titulo", "Se creó la consulta!");
+
+        return "exito.html";
+    }
+
 //    @GetMapping("veterinario")
 //    public String veterinarioRegistro(Model model){
 //        Veterinario veterinario = new Veterinario ();
@@ -54,6 +71,4 @@ public class VeterinarioControlador {
 // }   
 //
 //   
-   
-    }
-    
+}

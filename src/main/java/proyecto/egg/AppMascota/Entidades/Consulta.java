@@ -1,6 +1,4 @@
-
 package proyecto.egg.AppMascota.Entidades;
-
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Consulta {
+
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
@@ -19,15 +18,14 @@ public class Consulta {
     private String motivo;
     private Integer precio;
     private String peso;
-    private String vacuna;
-    private String cirujia;
+
     private String observaciones;
-    
+
     @OneToOne
     private Veterinario veterinario;
     @ManyToOne
     private Mascota mascota;
-    
+
     public String getId() {
         return id;
     }
@@ -92,26 +90,9 @@ public class Consulta {
         this.motivo = motivo;
     }
 
-    public String getVacuna() {
-        return vacuna;
-    }
-
-    public void setVacuna(String vacuna) {
-        this.vacuna = vacuna;
-    }
-
-    public String getCirujia() {
-        return cirujia;
-    }
-
-    public void setCirujia(String cirujia) {
-        this.cirujia = cirujia;
-    }
-
     @Override
     public String toString() {
-        return "Consulta{" + "id=" + id + ", fecha=" + fecha + ", motivo=" + motivo + ", precio=" + precio + ", peso=" + peso + ", vacuna=" + vacuna + ", cirujia=" + cirujia + ", observaciones=" + observaciones + ", veterinario=" + veterinario + ", mascota=" + mascota + '}';
+        return "Consulta{" + "id=" + id + ", fecha=" + fecha + ", motivo=" + motivo + ", precio=" + precio + ", peso=" + peso + ", observaciones=" + observaciones + ", veterinario=" + veterinario + ", mascota=" + mascota + '}';
     }
-    
-    
+
 }
