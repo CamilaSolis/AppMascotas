@@ -1,7 +1,5 @@
 package proyecto.egg.AppMascota.Controladores;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import proyecto.egg.AppMascota.Errores.ErrorServicio;
 import proyecto.egg.AppMascota.Servicios.MascotaServicio;
 
-
-
 @Controller
 @RequestMapping("/mascota")
 public class MascotaControlador {
@@ -22,37 +18,33 @@ public class MascotaControlador {
     private MascotaServicio mascotaServicio;
 
     @GetMapping("")
-    public String mascota(){
+    public String mascota() {
         return "crearMascota.html";
     }
 
     @PostMapping("/registroMascota")
     public String crearMascota(
-            ModelMap model, 
-            @RequestParam String nombre, 
-            @RequestParam String raza, 
-            @RequestParam String fechaNacimiento
-    ) {
+            ModelMap model,
+            @RequestParam String nombre,
+            @RequestParam String raza,
+            @RequestParam String sexo
+    ) throws ErrorServicio {
 
         try {
-            //        try {
-            mascotaServicio.crearMascota(nombre, raza,fechaNacimiento );
+            mascotaServicio.registroMascota(nombre, raza, sexo);
         } catch (ErrorServicio ex) {
-            Logger.getLogger(MascotaControlador.class.getName()).log(Level.SEVERE, null, ex);
+            model.put("nombre", nombre);
+            model.put("raza", raza);
+            model.put("sexo", sexo);
+            return "crearmascota.html";
         }
-//        } catch (ErrorServicio ex) {
-//            model.put("error", ex.getMessage());
-//            model.put("nombre", nombre);
-//            model.put("raza", raza);
-//            model.put("fechaNacimiento", fechaNacimiento);
-//            return "crearMascota.html";
-//        }
         model.put("titulo", "Se creó la mascota");
         return "exito.html";
     }
-    
+
     @GetMapping("/test")
-    public String test(){
+    public String test() {
         return "exito.html";
     }
+
 }

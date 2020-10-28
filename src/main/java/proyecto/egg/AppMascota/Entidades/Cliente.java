@@ -1,7 +1,6 @@
 
 package proyecto.egg.AppMascota.Entidades;
 
-import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,7 +14,7 @@ public class Cliente {
     private String telefono;
     private String email;
     private String domicilio;
-    private Date baja;
+    private String baja;
     private String clave1;
    
     @OneToMany
@@ -53,11 +52,11 @@ public class Cliente {
         this.email = email;
     }
 
-    public Date getBaja() {
+    public String getBaja() {
         return baja;
     }
 
-    public void setBaja(Date baja) {
+    public void setBaja(String baja) {
         this.baja = baja;
     }
 

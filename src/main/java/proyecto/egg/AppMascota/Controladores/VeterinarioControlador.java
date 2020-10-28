@@ -43,6 +43,9 @@ public class VeterinarioControlador {
 }
     
     
+    
+    
+    
 //    @GetMapping("veterinario")
 //    public String veterinarioRegistro(Model model){
 //        Veterinario veterinario = new Veterinario ();

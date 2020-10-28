@@ -1,7 +1,7 @@
 
 package proyecto.egg.AppMascota.Entidades;
 
-import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,7 +15,7 @@ public class Consulta {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
-    private Date fecha;
+    private String fecha;
     private String motivo;
     private Integer precio;
     private String peso;
@@ -36,11 +36,11 @@ public class Consulta {
         this.id = id;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
