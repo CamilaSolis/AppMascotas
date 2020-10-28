@@ -6,9 +6,12 @@
 package proyecto.egg.AppMascota.Servicios;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import proyecto.egg.AppMascota.Entidades.Consulta;
 import proyecto.egg.AppMascota.Entidades.Mascota;
 import proyecto.egg.AppMascota.Errores.ErrorServicio;
 import proyecto.egg.AppMascota.Repositorios.MascotaRepositorio;
@@ -41,6 +44,17 @@ public class MascotaServicio {
         
         mascotaRepositorio.save(mascota);
     }
+    public List<Consulta> historia_clinica(String Id) throws ErrorServicio{
+        Optional<Mascota> mascota = mascotaRepositorio.findById(Id);
+        
+        if (mascota.isPresent()){
+            List<Consulta> consultas = mascota.get().getHistoriaClinica();
+            return consultas;
+        }else{
+            throw new ErrorServicio("No se encontro la lista de consultas");
+        } 
+    }
+
 }
 
 

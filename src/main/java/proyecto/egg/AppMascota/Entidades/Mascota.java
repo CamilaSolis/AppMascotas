@@ -21,8 +21,6 @@ public class Mascota {
     @OneToMany
     private List<Consulta> historiaClinica;
     
-    
-
     public String getNombre() {
         return nombre;
     }
