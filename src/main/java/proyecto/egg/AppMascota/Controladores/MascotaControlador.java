@@ -53,7 +53,7 @@ public class MascotaControlador {
         return "exito.html";
     }
 
-    @GetMapping("")
+    @GetMapping("/listarMascotas")
     public String listarMascotasPorCliente(String documento, ModelMap model) {
         
         List<Mascota> mascotas = mascotaServicio.listarMascotasPorCliente(documento);
