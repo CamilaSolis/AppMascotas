@@ -29,7 +29,8 @@ public class PortalControlador {
     public String index() {
         return "index.html";
     }
-
+    
+      
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, ModelMap model) {
         if (error != null) {
