@@ -1,5 +1,6 @@
 package proyecto.egg.AppMascota.Controladores;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,8 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import proyecto.egg.AppMascota.Entidades.Mascota;
 import proyecto.egg.AppMascota.Entidades.Veterinario;
 import proyecto.egg.AppMascota.Errores.ErrorServicio;
+import proyecto.egg.AppMascota.Repositorios.MascotaRepositorio;
 import proyecto.egg.AppMascota.Servicios.ConsultaServicio;
 import proyecto.egg.AppMascota.Servicios.VeterinarioServicio;
 
@@ -21,6 +24,8 @@ public class VeterinarioControlador {
     private VeterinarioServicio veterinarioServicio;
     @Autowired
     private ConsultaServicio consultaServicio;
+    @Autowired
+    private MascotaRepositorio mascotaRepositorio;
 
     @GetMapping("")
     public String veterinario() {
@@ -41,8 +46,13 @@ public class VeterinarioControlador {
         model.put("titulo", "Se creó el veterinario");
         return "exito";
     }
+    
+    @GetMapping("/crearConsulta")
+    public String crear_consulta() {
+        return "crearConsulta.html";
+    }
 
-    @PostMapping("/crearConsulta")
+    @PostMapping("/crear_consulta")
     public String crearConsulta(ModelMap model, @RequestParam Integer precio, @RequestParam String matriculaVeterinario, @RequestParam String nombreMascota, @RequestParam String peso, @RequestParam String motivo, @RequestParam String observaciones) throws ErrorServicio {
         try {
             consultaServicio.registrar(motivo, precio, peso, observaciones, matriculaVeterinario, nombreMascota);
@@ -63,6 +73,14 @@ public class VeterinarioControlador {
         return "exito.html";
     }
 
+    @PostMapping("/buscarCliente")
+    public String buscarCliente(@RequestParam String documento, ModelMap model){
+        List<Mascota> mascotas = mascotaRepositorio.listarMascotasPorCliente(documento);
+        model.put("mascotas",mascotas);
+        
+        return "crearConsulta.html";
+    }
+    
 //    @GetMapping("veterinario")
 //    public String veterinarioRegistro(Model model){
 //        Veterinario veterinario = new Veterinario ();

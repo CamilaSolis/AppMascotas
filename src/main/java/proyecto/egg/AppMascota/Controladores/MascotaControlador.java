@@ -27,7 +27,7 @@ public class MascotaControlador {
     @Autowired
     private ClienteServicio clienteServicio;
 
-    @GetMapping("")
+    @GetMapping("/crearMascota")
     public String mascota() {
         return "crearMascota.html";
     }

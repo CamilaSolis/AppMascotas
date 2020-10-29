@@ -28,7 +28,15 @@
     <div class="mt-4 ml-3">
         <div class="row">
             <div class="form-group col-6">
-                <form action="/veterinario/crearConsulta" method="post">
+                <label class="pedirDatos">Documento del Cliente</label>
+                <form action="/veterinario/buscarCliente" method="post">
+                    <input type="text" class="form-control" name="documento" required>
+                    <input type="submit" value="BUSCAR" class="btn btn-info">
+                </form>
+                
+                
+                
+                <form action="/veterinario/crear_consulta" method="post">
                     
                     <label class="pedirDatos">Valor de la consulta</label>
                     <div class="input-group mb-3">
@@ -38,21 +46,19 @@
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" name="matriculaVeterinario" required>
                     </div>
-                    <label class="pedirDatos">Cliente</label>
-                    <div class="input-group mb-3">
-                       <form action="">
-                        <input type="text" class="form-control" name="cliente" required>
-                        <input type="submit" value="BUSCAR" class="btn btn-info">
-                       </form>
-                    </div>
+                    
+                    
 
                 </div>
 
             <div class="form-group col-6">
-                <label class="pedirDatos">Nombre de la mascota</label>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="nombreMascota" required>
+                <label>Mascota</label>
+                <div>
+                    <select class="pedirDatos" name="nombreMascota">
+                        <option th:each="mascotas : ${mascotas}" th:value="${mascotas.nombre}" th:text="${mascotas.nombre}"></option>
+                    </select>
                 </div>
+                
                 <label class="pedirDatos">Peso de la mascota</label>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" name="peso" required>
