@@ -81,4 +81,9 @@ public class PortalControlador {
 
         return "opciones_veterinario.html";
     }
+    
+    @GetMapping("/crearConsulta")
+    public String crear_consulta() {
+        return "crearConsulta.html";
+    }
 }

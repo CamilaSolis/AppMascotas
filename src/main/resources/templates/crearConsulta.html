@@ -28,34 +28,21 @@
         <div class="row">
             <div class="form-group col-6">
                 <form action="/veterinario/crearConsulta" method="post">
-                    <label class="pedirDatos">Fecha de la consulta</label>
-                    <div class="input-group mb-3">
-                        <input type="date" class="form-control" name="fecha" required>
-                    </div>
+                    
                     <label class="pedirDatos">Valor de la consulta</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="precio" required>
+                        <input type="number" class="form-control" name="precio" required>
                     </div>
-                    <label class="pedirDatos">Veterinario</label>
+                    <label class="pedirDatos">Matricula del Veterinario</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="veterinario" required>
+                        <input type="text" class="form-control" name="matriculaVeterinario" required>
                     </div>
-                    <label class="pedirDatos">Cliente</label>
-                    <div class="input-group mb-3">
-                        <input type="search" name="buscarCliente" class="form-control" required>
-                        <input type="submit" value="Buscar" class="pedirDatos" style="border-radius: 3px;">
-                    </div>
-
             </div>
 
             <div class="form-group col-6">
                 <label class="pedirDatos">Nombre de la mascota</label>
                 <div class="input-group mb-3">
-                    <select class="form-control" id="mascotas">
-                        <option>Mascota 1</option>
-                        <option>Mascota 2</option>
-                        <option>Mascota 3</option>
-                    </select>
+                    <input type="text" class="form-control" name="nombreMascota" required>
                 </div>
                 <label class="pedirDatos">Peso de la mascota</label>
                 <div class="input-group mb-3">
