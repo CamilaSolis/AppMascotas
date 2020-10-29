@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import proyecto.egg.AppMascota.Entidades.Cliente;
 import proyecto.egg.AppMascota.Entidades.Mascota;
 import proyecto.egg.AppMascota.Entidades.Veterinario;
 import proyecto.egg.AppMascota.Errores.ErrorServicio;
+import proyecto.egg.AppMascota.Repositorios.ClienteRepositorio;
 import proyecto.egg.AppMascota.Repositorios.MascotaRepositorio;
 import proyecto.egg.AppMascota.Servicios.ConsultaServicio;
 import proyecto.egg.AppMascota.Servicios.VeterinarioServicio;
@@ -26,6 +28,9 @@ public class VeterinarioControlador {
     private ConsultaServicio consultaServicio;
     @Autowired
     private MascotaRepositorio mascotaRepositorio;
+    
+    @Autowired
+    private ClienteRepositorio clienteRepositorio;
 
     @GetMapping("")
     public String veterinario() {
@@ -48,7 +53,9 @@ public class VeterinarioControlador {
     }
     
     @GetMapping("/crearConsulta")
-    public String crear_consulta() {
+    public String crear_consulta(ModelMap model) {
+        List<Cliente> clientes = clienteRepositorio.buscarClientes();
+        model.put("clientes", clientes);
         return "crearConsulta.html";
     }
 
@@ -77,7 +84,7 @@ public class VeterinarioControlador {
     public String buscarCliente(@RequestParam String documento, ModelMap model){
         List<Mascota> mascotas = mascotaRepositorio.listarMascotasPorCliente(documento);
         model.put("mascotas",mascotas);
-        
+        model.put("documento", documento);
         return "crearConsulta.html";
     }
     

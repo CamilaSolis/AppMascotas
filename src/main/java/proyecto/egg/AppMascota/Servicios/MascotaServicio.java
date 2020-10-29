@@ -146,4 +146,14 @@ public class MascotaServicio {
             throw new ErrorServicio("No se encontro la lista de consultas");
         }
     }
+    
+    public void eliminarMascota(String id) throws ErrorServicio{
+        Mascota mascota = mascotaRepositorio.buscarPorId(id);
+        if(mascota != null){
+            mascotaRepositorio.delete(mascota);
+        }else{
+            throw new ErrorServicio("No se encontro la mascota");
+        }
+        
+    }
 }
