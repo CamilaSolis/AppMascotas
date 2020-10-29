@@ -1,5 +1,6 @@
 package proyecto.egg.AppMascota.Controladores;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import proyecto.egg.AppMascota.Entidades.Cliente;
+import proyecto.egg.AppMascota.Entidades.Mascota;
 import proyecto.egg.AppMascota.Errores.ErrorServicio;
 import proyecto.egg.AppMascota.Servicios.ClienteServicio;
 import proyecto.egg.AppMascota.Servicios.MascotaServicio;
@@ -51,5 +53,13 @@ public class MascotaControlador {
         return "exito.html";
     }
 
+    @GetMapping("")
+    public String listarMascotasPorCliente(String documento, ModelMap model) {
+        
+        List<Mascota> mascotas = mascotaServicio.listarMascotasPorCliente(documento);
+        model.put("mascotas", mascotas);
+             
+        return "crearMascota.html";
+    }
 
 }
