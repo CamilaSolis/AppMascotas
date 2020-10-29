@@ -30,7 +30,7 @@ public class ConsultaServicio implements UserDetailsService {
 
     @Autowired
     private MascotaRepositorio mascotaRepositorio;
-
+    
     @Transactional
     public void registrar(String motivo, Integer precio, String peso, String observaciones, String matriculaVeterinario, String nombreMascota) throws ErrorServicio {
         validar(motivo, precio, peso, observaciones);

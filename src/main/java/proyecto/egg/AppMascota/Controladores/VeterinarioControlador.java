@@ -55,6 +55,7 @@ public class VeterinarioControlador {
             model.put("observaciones", observaciones);
             model.put("matriculaVeterinario", matriculaVeterinario);
             model.put("nombreMascota", nombreMascota);
+            
 
             return "crearConsulta.html";
         }
