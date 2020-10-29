@@ -130,6 +130,12 @@ public class MascotaServicio {
 //        }
 //        return null;
 //    }
+    
+    public List<Mascota> listarMascotasPorCliente(String documento){
+        List<Mascota> listadoMascotas = new ArrayList();
+        return listadoMascotas = mascotaRepositorio.listarMascotasPorCliente(documento);
+     }
+    
     public List<Consulta> historia_clinica(String Id) throws ErrorServicio {
         Optional<Mascota> mascota = mascotaRepositorio.findById(Id);
 
