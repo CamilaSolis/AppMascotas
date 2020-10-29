@@ -27,7 +27,7 @@ public class MascotaControlador {
     @Autowired
     private ClienteServicio clienteServicio;
 
-    @GetMapping("")
+    @GetMapping("/crearMascota")
     public String mascota() {
         return "crearMascota.html";
     }
@@ -53,7 +53,7 @@ public class MascotaControlador {
         return "exito.html";
     }
 
-    @GetMapping("")
+    @GetMapping("/listarMascotas")
     public String listarMascotasPorCliente(String documento, ModelMap model) {
         
         List<Mascota> mascotas = mascotaServicio.listarMascotasPorCliente(documento);

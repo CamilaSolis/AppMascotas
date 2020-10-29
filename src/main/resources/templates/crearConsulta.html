@@ -17,6 +17,7 @@
 </head>
 
 <body>
+
     <header class="d-flex align-items-center">
         <img src="./../static/img/logo-blanco.png">
     </header>
@@ -27,7 +28,15 @@
     <div class="mt-4 ml-3">
         <div class="row">
             <div class="form-group col-6">
-                <form action="/veterinario/crearConsulta" method="post">
+                <label class="pedirDatos">Documento del Cliente</label>
+                <form action="/veterinario/buscarCliente" method="post">
+                    <input type="text" class="form-control" name="documento" required>
+                    <input type="submit" value="BUSCAR" class="btn btn-info">
+                </form>
+                
+                
+                
+                <form action="/veterinario/crear_consulta" method="post">
                     
                     <label class="pedirDatos">Valor de la consulta</label>
                     <div class="input-group mb-3">
@@ -36,14 +45,25 @@
                     <label class="pedirDatos">Matricula del Veterinario</label>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" name="matriculaVeterinario" required>
+
                     </div>                    
             </div>
 
-            <div class="form-group col-6">
-                <label class="pedirDatos">Nombre de la mascota</label>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="nombreMascota" required>
+                    </div>
+                    
+                    
+
                 </div>
+
+
+            <div class="form-group col-6">
+                <label>Mascota</label>
+                <div>
+                    <select class="pedirDatos" name="nombreMascota">
+                        <option th:each="mascotas : ${mascotas}" th:value="${mascotas.nombre}" th:text="${mascotas.nombre}"></option>
+                    </select>
+                </div>
+                
                 <label class="pedirDatos">Peso de la mascota</label>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" name="peso" required>
@@ -52,23 +72,30 @@
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" name="motivo" required>
                 </div>
+
+            </div>
+            <div class="col-12">            
                 <label class="pedirDatos">Observaciones</label>
                 <div class="input-group mb-3">
                     <textarea class="form-control" name="observaciones" rows="4" cols="40"
                         placeholder="Ingrese descripción de la consulta..."></textarea>
                 </div>
             </div>
+
+            <div class="col-12 boton">    
+                <input type="submit" value="REGISTRAR CONSULTA" class="btn btn-primary boton">   
+           </div>
+            
         </div>
-        <div class="form-group">    
-            <input type="submit" value="REGISTRAR CONSULTA" class="btn btn-primary">   
-       </div>
-        </form>
+
+
+       </form>
+       <div class="col-12">
+        <a href="/templates/index.html" class="btn btn-secondary boton mt-4 mb-3">Inicio</a>
+     </div>
 
     </div>
-    <div style="text-align: center">
-        <br>
-       <a href="/templates/index.html" class="btn btn-secondary">Inicio</a>
-    </div>
+
     <footer class="d-flex align-items-center">
         <p>Copyright@Cyber Medical Pet</p>
     </footer>

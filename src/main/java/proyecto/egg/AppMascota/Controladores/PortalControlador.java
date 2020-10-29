@@ -10,8 +10,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import proyecto.egg.AppMascota.Entidades.Mascota;
+import proyecto.egg.AppMascota.Errores.ErrorServicio;
+import proyecto.egg.AppMascota.Repositorios.MascotaRepositorio;
 import proyecto.egg.AppMascota.Servicios.ClienteServicio;
 import proyecto.egg.AppMascota.Servicios.VeterinarioServicio;
 
@@ -24,12 +28,16 @@ public class PortalControlador {
 
     @Autowired
     private VeterinarioServicio veterinarioServicio;
+    
+    @Autowired
+    private MascotaRepositorio mascotaRepositorio;
 
     @GetMapping("/")
     public String index() {
         return "index.html";
     }
-
+    
+      
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, ModelMap model) {
         if (error != null) {
@@ -86,4 +94,6 @@ public class PortalControlador {
     public String crear_consulta() {
         return "crearConsulta.html";
     }
+    
+    
 }
