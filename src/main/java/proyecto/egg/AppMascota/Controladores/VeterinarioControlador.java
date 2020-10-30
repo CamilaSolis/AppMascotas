@@ -38,7 +38,7 @@ public class VeterinarioControlador {
     }
 
     @PostMapping("/registroVeterinario")
-    public String registroVeterinario(ModelMap model, ModelMap modelo, @RequestParam String nombre, @RequestParam String matricula, @RequestParam String nombreClinica,
+    public String registroVeterinario(ModelMap model,  @RequestParam String nombre, @RequestParam String matricula, @RequestParam String nombreClinica,
             @RequestParam String zona, @RequestParam String password1, @RequestParam String password2) throws ErrorServicio {
 
         try {
@@ -54,14 +54,19 @@ public class VeterinarioControlador {
     
     @GetMapping("/crearConsulta")
     public String crear_consulta(ModelMap model) {
-        List<Cliente> clientes = clienteRepositorio.buscarClientes();
-        model.put("clientes", clientes);
+//        List<Cliente> clientes = clienteRepositorio.buscarClientes();
+//        model.put("clientes", clientes);
         return "crearConsulta.html";
     }
 
     @PostMapping("/crear_consulta")
-    public String crearConsulta(ModelMap model, @RequestParam Integer precio, @RequestParam String matriculaVeterinario, @RequestParam String nombreMascota, @RequestParam String peso, @RequestParam String motivo, @RequestParam String observaciones) throws ErrorServicio {
+    public String crearConsulta(ModelMap model, @RequestParam Integer precio, @RequestParam String matriculaVeterinario, 
+            @RequestParam String nombreMascota, @RequestParam String peso, @RequestParam String motivo, 
+            @RequestParam String observaciones) throws ErrorServicio {
         try {
+              List<Cliente> clientes = clienteRepositorio.buscarClientes();
+        model.put("clientes", clientes);
+        
             consultaServicio.registrar(motivo, precio, peso, observaciones, matriculaVeterinario, nombreMascota);
 
         } catch (ErrorServicio ex) {
@@ -71,7 +76,7 @@ public class VeterinarioControlador {
             model.put("peso", peso);
             model.put("observaciones", observaciones);
             model.put("matriculaVeterinario", matriculaVeterinario);
-            model.put("nombreMascota", nombreMascota);
+//            model.put("idMascota", idMascota);
 
             return "crearConsulta.html";
         }

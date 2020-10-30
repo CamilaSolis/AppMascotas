@@ -30,19 +30,18 @@
             <div class="form-group col-6">
                 <label class="pedirDatos">Documento del Cliente</label>
                 
-                <form action="/veterinario/buscarCliente" method="post">
+                
+                
+                   <form action="/veterinario/buscarCliente" method="post">
                     
-                    <select class="pedirDatos" name="documento">
-                        <option th:each="clientes : ${clientes}" th:value="${clientes.documento}" th:text="${clientes.documento}"></option>
-                    </select>
+                    <input class="pedirDatos" name="documento">
+                        <!--<option th:each="clientes : ${clientes}" th:value="${clientes.documento}" th:text="${clientes.documento}"></option>-->
+                    </input>
                     <input type="submit" value="BUSCAR" class="btn btn-info" href="crearConsulta.html">
                 </form>
                 
-                
-                
                 <form action="/veterinario/crear_consulta" method="post">
-                    
-                    
+                                    
                     
                     <label class="pedirDatos">Valor de la consulta</label>
                     <div class="input-group mb-3">
@@ -53,14 +52,12 @@
                         <input type="text" class="form-control" name="matriculaVeterinario" required>
                     </div>
                     
-                    
-
-                </div>
+                    </div>
 
             <div class="form-group col-6">
                 <label>Mascota</label>
                 <div>
-                    <select class="pedirDatos" name="nombreMascota">
+                    <select class="pedirDatos" name="nombreMascota" >
                         <option th:each="mascotas : ${mascotas}" th:value="${mascotas.nombre}" th:text="${mascotas.nombre}"></option>
                     </select>
                 </div>
