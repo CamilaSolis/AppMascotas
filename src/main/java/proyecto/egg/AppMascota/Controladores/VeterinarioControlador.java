@@ -52,12 +52,12 @@ public class VeterinarioControlador {
         return "exito";
     }
     
-    @GetMapping("/crearConsulta")
-    public String crear_consulta(ModelMap model) {
-//        List<Cliente> clientes = clienteRepositorio.buscarClientes();
-//        model.put("clientes", clientes);
-        return "crearConsulta.html";
-    }
+//    @GetMapping("/crearConsulta")
+//    public String crear_consulta(ModelMap model) {
+////        List<Cliente> clientes = clienteRepositorio.buscarClientes();
+////        model.put("clientes", clientes);
+//        return "crearConsulta.html";
+//    }
 
     @PostMapping("/crear_consulta")
     public String crearConsulta(ModelMap model, @RequestParam Integer precio, @RequestParam String matriculaVeterinario, 
