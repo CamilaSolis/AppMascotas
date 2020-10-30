@@ -148,9 +148,9 @@ public class MascotaServicio {
     }
     
     public void eliminarMascota(String id) throws ErrorServicio{
-        Mascota mascota = mascotaRepositorio.buscarPorId(id);
-        if(mascota != null){
-            mascotaRepositorio.delete(mascota);
+        Optional<Mascota> mascota = mascotaRepositorio.findById(id);
+        if(mascota.isPresent()){
+            mascotaRepositorio.delete(mascota.get());
         }else{
             throw new ErrorServicio("No se encontro la mascota");
         }
