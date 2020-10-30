@@ -18,6 +18,7 @@ public class Consulta {
     private String motivo;
     private Integer precio;
     private String peso;
+    
 
     private String observaciones;
 
