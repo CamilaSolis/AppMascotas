@@ -14,65 +14,75 @@
   </head>
 
   <body class="d-flex align-items-center">
+    <video autoplay muted loop id="myVideo">
+      <source src="/video/puppy_and_kitty.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
     <div class="container">
-      <div class="row d-flex justify-content-center">
-        <div class="text-center">
-          <img src="/img/logo.png">
-          <h1>¡Bienvenido!</h1>
-          <div id="accordion">
-            <div class="card">
-              <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Iniciar sesión como Dueño de Mascota
-                  </button>
-                </h5>
-              </div>
-              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body">
-                  <form action="/logincheck" method="POST">
-                    <div class="form-group text-left">
-                      <label for="emailCliente">Email</label>
-                      <input type="email" class="form-control" name="emailmatricula" id="emailCliente" aria-describedby="emailHelp" placeholder="Escriba su Email">
-                    </div>
-                    <div class="form-group text-left">
-                      <label for="passCliente">Contraseña</label>
-                      <input type="password" class="form-control" name="clave1" id="passCliente" placeholder="Escriba su contraseña">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Entrar</button>
-                  </form>
+      <div class="row">
+        <div class="col-6 text-center intro">
+          <img class="d-block ml-auto mr-auto" src="/img/logo.png">
+          <p class="ml-auto mr-auto">Ten un seguimiento de tu mascota y encuentra veterinarios listos para atenderte.</p>
+          <a class="mt-4" href="saberMas.html">Quiero saber más</a>
+        </div>
+        <div class="col-6 d-flex justify-content-center">
+          <div class="text-center">
+            <h1 class="mb-5">¡Bienvenido!</h1>
+            <div id="accordion">
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Iniciar sesión como Cliente
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body">
+                    <form action="/logincheck" method="POST">
+                      <div class="form-group text-left">
+                        <label for="emailCliente">Email</label>
+                        <input type="email" class="form-control" name="emailmatricula" id="emailCliente" aria-describedby="emailHelp" placeholder="Escriba su Email">
+                      </div>
+                      <div class="form-group text-left">
+                        <label for="passCliente">Contraseña</label>
+                        <input type="password" class="form-control" name="clave1" id="passCliente" placeholder="Escriba su contraseña">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Entrar</button>
+                    </form>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="card mt-3">
-              <div class="card-header" id="headingTwo">
-                <h5 class="mb-0">
-                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Iniciar sesión como Veterinario
-                  </button>
-                </h5>
-              </div>
-              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                <div class="card-body">
-                  <form action="/logincheck" method="POST">
-                    <div class="form-group text-left">
-                      <label for="matriculaVet">Matricula</label>
-                      <input type="text" class="form-control" name="emailmatricula" id="matriculaVet"  placeholder="Escriba su matricula">
-                    </div>
-                    <div class="form-group text-left">
-                      <label for="passVet">Contraseña</label>
-                      <input type="password" class="form-control" name="clave1" id="passVet" placeholder="Escriba su contraseña">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Entrar</button>
-                  </form>
+              <div class="card mt-3">
+                <div class="card-header" id="headingTwo">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Iniciar sesión como Veterinario
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div class="card-body">
+                    <form action="/logincheck" method="POST">
+                      <div class="form-group text-left">
+                        <label for="matriculaVet">Matricula</label>
+                        <input type="text" class="form-control" name="emailmatricula" id="matriculaVet"  placeholder="Escriba su matricula">
+                      </div>
+                      <div class="form-group text-left">
+                        <label for="passVet">Contraseña</label>
+                        <input type="password" class="form-control" name="clave1" id="passVet" placeholder="Escriba su contraseña">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Entrar</button>
+                    </form>
+                  </div>
                 </div>
               </div>
+              <a href="/cliente" class="btn btn-link registrarse mt-3">Registrarse como Cliente</a>
+              <a href="/veterinario" class="btn btn-link registrarse mt-3">Registrarse como Veterinario</a>
             </div>
-            <a href="/cliente" class="btn btn-link registrarse mt-3">Registrarse como Cliente</a>
-            <a href="/veterinario" class="btn btn-link registrarse mt-3">Registrarse como Veterinario</a>
           </div>
         </div>
-      </div>  
+      </div>
     </div>
   </body>
 </html>

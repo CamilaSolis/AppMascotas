@@ -1,13 +1,36 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 
 *{
-  margin: 0px;
+  margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+}
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  opacity: 0.5;
 }
 body{
   min-height: 100vh;
   position: relative;
+}
+.navbar{
+  background-color: #029DBF;
+}
+.navbar img{
+  height: 70px;
+  width: auto;
+}
+.navbar .nav-link{
+  color: #fff;
+  font-weight: 500;
+  font-size: 20px;
+}
+.navbar .nav-link:hover{
+  color: rgb(171, 171, 171);
 }
 header{
   height: 200px;
@@ -55,6 +78,7 @@ footer p{
 }
 #accordion .card{
   border: none;
+  border-radius: 10px;
 }
 #accordion .card-header{
   border: none;
@@ -88,7 +112,7 @@ footer p{
   font-size: 18px;
 }
 #accordion .card-header .btn-link.collapsed:after, #accordion .card-header .btn-link:after{
-  content: "\f107";
+  content: ">";
   color: #57B7DD;
   font-family: "Font Awesome";
   font-style: normal;
@@ -117,12 +141,57 @@ footer p{
   background-color: #57B7DD;
   border: none;
   color: #fff;
+  transition: 0.3s;
+}
+#accordion .btn-primary, .registrarse:hover{
+  color: #fff;
+  text-decoration: none;
+  background-color: rgb(20, 84, 109);
+  transition: 0.3s;
 }
 .registrarse{
   height: 60px;
   border-radius: 10px;
   font-size: 18px;
   padding: 15px;
+}
+.intro p{
+  font-size: 20px;
+  width: 80%;
+}
+.intro a{
+  padding: 10px 15px;
+  border-radius: 20px;
+  background-color: red;
+  color: white;
+  font-size: 20px;
+  transition: 0.3s;
+}
+.intro a:hover{
+  text-decoration: none;
+  background-color: rgb(74, 9, 9);
+  transition: 0.3s;
+}
+.btn-presentacion{
+  background-color: red;
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 30px;
+  width: 400px;
+}
+.btn-presentacion:hover{
+  background-color: rgb(74, 9, 9);
+  color: #fff;
+}
+.informacion img{
+  width: 300px;
+  height: auto;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+.informacion h2{
+  color: #2E4962;
 }
 @media (max-width: 992px){
   header{
