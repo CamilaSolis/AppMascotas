@@ -39,7 +39,7 @@ public class ClienteControlador {
             return "registroCliente.html";
         }
         model.put("titulo", "Se creó el cliente");
-        return "exito";
+        return "exito_cliente.html";
     }
     
     

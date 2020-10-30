@@ -49,7 +49,7 @@ public class VeterinarioControlador {
             return "veterinario.html";
         }
         model.put("titulo", "Se creó el veterinario");
-        return "exito";
+        return "exito_veterinario";
     }
     
     @GetMapping("/crearConsulta")
