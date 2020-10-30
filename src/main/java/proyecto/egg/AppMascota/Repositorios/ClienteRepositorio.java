@@ -1,6 +1,7 @@
 
 package proyecto.egg.AppMascota.Repositorios;
 
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,4 +16,7 @@ public interface ClienteRepositorio extends JpaRepository<Cliente,String> {
     
      @Query("SELECT c FROM Cliente c WHERE c.documento=:documento")
     public Cliente buscarPorDocumento(@Param("documento") String documento);
+    
+    @Query("SELECT c From Cliente c")
+    public List<Cliente> buscarClientes();
 }

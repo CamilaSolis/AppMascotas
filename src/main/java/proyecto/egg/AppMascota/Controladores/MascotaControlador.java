@@ -50,6 +50,7 @@ public class MascotaControlador {
             return "crearmascota.html";
         }
         model.put("titulo", "Se creó la mascota");
+        model.put("descripcion","/opciones_cliente");
         return "exito.html";
     }
 
@@ -60,6 +61,25 @@ public class MascotaControlador {
         model.put("mascotas", mascotas);
              
         return "crearMascota.html";
+    }
+    
+    @GetMapping("/eliminar_mascota")
+    public String eliminar_mascota() throws ErrorServicio{
+        
+        return "eliminar_mascota.html";
+    }
+    
+    @PostMapping("/eliminarMascota")
+    public String eliminarMascota(ModelMap model, @RequestParam String id) throws ErrorServicio{
+        try{
+            mascotaServicio.eliminarMascota(id);
+        }catch (ErrorServicio ex){
+            
+            model.put("id", id);
+            return "eliminar_mascota.html";
+        }
+        model.put("titulo","Mascota eliminada");
+        return "exito.html";
     }
 
 }
