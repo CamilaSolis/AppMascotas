@@ -11,4 +11,6 @@ import proyecto.egg.AppMascota.Entidades.Consulta;
 @Repository
 public interface ConsultaRepositorio extends JpaRepository<Consulta, String>{
 
+    
+ 
 }

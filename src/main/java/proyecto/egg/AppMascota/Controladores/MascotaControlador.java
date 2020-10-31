@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import proyecto.egg.AppMascota.Entidades.Cliente;
+import proyecto.egg.AppMascota.Entidades.Consulta;
 import proyecto.egg.AppMascota.Entidades.Mascota;
 import proyecto.egg.AppMascota.Errores.ErrorServicio;
 import proyecto.egg.AppMascota.Servicios.ClienteServicio;
@@ -80,6 +81,24 @@ public class MascotaControlador {
         }
         model.put("titulo","Mascota eliminada");
         return "exito.html";
+    }
+    
+    @GetMapping("/verConsultas")
+    public String verConsultas(){
+        return "verConsultas.html";
+    }
+    
+    @PostMapping("/buscarHistoriaClinica")
+    public String buscarHistoriaClinica(ModelMap model, @RequestParam String id) throws ErrorServicio{
+        try{
+            List<Consulta> consultas = mascotaServicio.historia_clinica(id);
+            model.put("consultas", consultas);
+        }catch (ErrorServicio ex){
+            model.put("error", ex.getMessage());
+            model.put("id", id);
+            return "verConsultas.html";
+        }
+        return "verConsultas.html";
     }
 
 }

@@ -156,4 +156,13 @@ public class MascotaServicio {
         }
         
     }
+    
+    public Mascota buscarMascota(String id) throws ErrorServicio{
+        Mascota mascota = mascotaRepositorio.buscarPorId(id);
+        if(mascota != null){
+            return mascota;
+        }else{
+            throw new ErrorServicio("No se encontro la mascota");
+        }
+    }
 }
