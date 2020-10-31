@@ -90,14 +90,9 @@ public class MascotaControlador {
     
     @PostMapping("/buscarHistoriaClinica")
     public String buscarHistoriaClinica(ModelMap model, @RequestParam String id) throws ErrorServicio{
-        try{
-            List<Consulta> consultas = mascotaServicio.historia_clinica(id);
-            model.put("consultas", consultas);
-        }catch (ErrorServicio ex){
-            model.put("error", ex.getMessage());
-            model.put("id", id);
-            return "verConsultas.html";
-        }
+        
+        List<Consulta> consultas = mascotaServicio.historia_clinica(id);
+        model.put("consultas", consultas);
         return "verConsultas.html";
     }
 
