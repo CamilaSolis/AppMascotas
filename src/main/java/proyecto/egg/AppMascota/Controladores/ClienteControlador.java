@@ -1,4 +1,3 @@
-
 package proyecto.egg.AppMascota.Controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ public class ClienteControlador {
     private ClienteServicio clienteServicio;
 
     @GetMapping("")
-    public String cliente(){
+    public String cliente() {
         return "registroCliente.html";
     }
 
@@ -41,7 +40,23 @@ public class ClienteControlador {
         model.put("titulo", "Se creó el cliente");
         return "exito";
     }
-    
-    
-}
 
+    @PostMapping("/modificarCliente")
+    public String modificarCliente(ModelMap model, @RequestParam String nombre, @RequestParam String documento, @RequestParam String telefono,
+            @RequestParam String email, @RequestParam String domicilio, @RequestParam String clave1, @RequestParam String clave2) throws ErrorServicio {
+
+        try {
+            clienteServicio.modificaciónCliente(nombre, documento, telefono, email, domicilio, clave1, clave2);
+        } catch (ErrorServicio ex) {
+            model.put("error", ex.getMessage());
+            model.put("nombre", nombre);
+            model.put("documento", documento);
+            model.put("telefono", telefono);
+            model.put("email", email);
+            model.put("domicilio", domicilio);
+            return "modificarCliente.html";
+        }
+        model.put("titulo", "Se modificó el cliente");
+        return "exito";
+    }
+}
