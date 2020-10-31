@@ -25,6 +25,7 @@ import proyecto.egg.AppMascota.Entidades.Consulta;
 import proyecto.egg.AppMascota.Entidades.Mascota;
 import proyecto.egg.AppMascota.Errores.ErrorServicio;
 import proyecto.egg.AppMascota.Repositorios.ClienteRepositorio;
+import proyecto.egg.AppMascota.Repositorios.ConsultaRepositorio;
 import proyecto.egg.AppMascota.Repositorios.MascotaRepositorio;
 
 /**
@@ -42,6 +43,9 @@ public class MascotaServicio {
 
     @Autowired
     private ClienteServicio clienteServicio;
+    
+    @Autowired
+    private ConsultaRepositorio consultaRepositorio;
 
     @Transactional
     public void registroMascota(String nombre, String raza, String sexo) throws ErrorServicio {
@@ -137,14 +141,10 @@ public class MascotaServicio {
      }
     
     public List<Consulta> historia_clinica(String Id) throws ErrorServicio {
-        Optional<Mascota> mascota = mascotaRepositorio.findById(Id);
+        List<Consulta> consultas = consultaRepositorio.listarConsultasPorMascota2(Id);
+        
+        return consultas;
 
-        if (mascota.isPresent()) {
-            List<Consulta> consultas = mascota.get().getHistoriaClinica();
-            return consultas;
-        } else {
-            throw new ErrorServicio("No se encontro la lista de consultas");
-        }
     }
     
     public void eliminarMascota(String id) throws ErrorServicio{
