@@ -61,7 +61,7 @@ font-weight: bold;
   font-weight: bold;
   font-size: medium;
 }
-.form-control, input{
+.form-control, input, select{
   background-color: #F6FEFF;
   border:1px solid #029DBF;
 }
