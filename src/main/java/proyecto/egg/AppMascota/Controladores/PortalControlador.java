@@ -37,6 +37,22 @@ public class PortalControlador {
         return "index.html";
     }
     
+      @GetMapping("/opciones_veterinario1")
+    public String opciones_veterinario1() {
+        return "opciones_veterinario1";
+    }
+       @GetMapping("/exito_veterinario")
+    public String exito_veterinario() {
+        return "exito_veterinario.html";
+    }
+         @GetMapping("/opciones_cliente1")
+    public String opciones_cliente1() {
+        return "opciones_cliente1";
+    }
+       @GetMapping("/exito_cliente")
+    public String exito_cliente() {
+        return "exito_cliente.html";
+    }
       
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, ModelMap model) {
