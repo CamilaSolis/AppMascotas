@@ -10,5 +10,10 @@ import proyecto.egg.AppMascota.Entidades.Consulta;
 
 @Repository
 public interface ConsultaRepositorio extends JpaRepository<Consulta, String>{
+    
+    @Query(value="SELECT c.* FROM consulta c INNER JOIN mascota_historia_clinica m ON c.id = m.historia_clinica_id WHERE m.mascota_id = :id", nativeQuery = true)
+    public List<Consulta> listarConsultasPorMascota2(@Param("id") String id);
+ 
+
 
 }

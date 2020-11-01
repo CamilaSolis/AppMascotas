@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="es">
 
 <head>
-    <title>Opciones Veterinario | Cyber Medical Pet</title>
+    <title>Exito | Cyber Medical Pet</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -41,24 +41,22 @@
       </div>
     </div>
   </nav>
-    <strong><p align="center">Por favor seleccione una opcion como Veterninario</p></strong>
 
+<div align="center"><img src="/img/exito_2.jpg"  width="100" height="100" /></div>
 
-    <td>
-      <p align="center"><a title="boton_7" href="veterinario/crearConsulta"><input align="center" type="image" name="boton_7" src="/img/boton_7.jpg" alt="Enviar formulario"></a></p>
-    
-    
-      <p align="center"><a title="botonprue_8" href="veterinario.html"><input align="center" type="image" name="boton_8" src="/img/boton_8.jpg" alt="Enviar formulario"></a></p>
-    
-    
-      <p align="center"><a title="boton_9" href="veterinario.html"><input align="center" type="image" name="boton_9" src="/img/boton_9.jpg" alt="Enviar formulario"></a></p>
-    
-    
-      <p align="center"><a title="boton_10" href="/mascota/verConsultas"><input align="center" type="image" name="boton_10" src="/img/boton_10.jpg" alt="Enviar formulario"></a></p>
-    
+<strong><p align="center" th:text="${error}"  ></p></strong>
 
-    <footer class="d-flex align-items-center mt-5">
-      <p>Copyright</p>
-    </footer>
-  </body>
-</html>
+<div align="center">
+<form method="get" action="">
+<p align="center"><input align="center" type="image" name="botondeenvio" src="/img/boton_1.jpg" alt="Enviar formulario"></p>
+</form>
+</div>
+</section>
+
+  <footer class="d-flex align-items-center mt-5">
+    <p>Copyright</p>
+  </footer>
+
+</body>
+
+  </html>    

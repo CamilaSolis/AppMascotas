@@ -1,6 +1,7 @@
 package proyecto.egg.AppMascota.Controladores;
 
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import proyecto.egg.AppMascota.Entidades.Cliente;
+import proyecto.egg.AppMascota.Entidades.Consulta;
 import proyecto.egg.AppMascota.Entidades.Mascota;
 import proyecto.egg.AppMascota.Errores.ErrorServicio;
+import proyecto.egg.AppMascota.Repositorios.MascotaRepositorio;
 import proyecto.egg.AppMascota.Servicios.ClienteServicio;
 import proyecto.egg.AppMascota.Servicios.MascotaServicio;
 
@@ -23,6 +26,9 @@ public class MascotaControlador {
 
     @Autowired
     private MascotaServicio mascotaServicio;
+    
+    @Autowired
+    private MascotaRepositorio mascotaRepositorio;
     
     @Autowired
     private ClienteServicio clienteServicio;
@@ -80,6 +86,20 @@ public class MascotaControlador {
         }
         model.put("titulo","Mascota eliminada");
         return "exito.html";
+    }
+    
+    @GetMapping("/verConsultas")
+    public String verConsultas(){
+        return "verConsultas.html";
+    }
+    
+    @PostMapping("/buscarHistoriaClinica")
+    public String buscarHistoriaClinica(ModelMap model, @RequestParam String id) throws ErrorServicio{
+        
+        List<Consulta> consultas = mascotaServicio.historia_clinica(id);
+        Mascota mascota = mascotaRepositorio.buscarPorId(id);
+        model.put("consultas", consultas);
+        return "verConsultas.html";
     }
 
 }
