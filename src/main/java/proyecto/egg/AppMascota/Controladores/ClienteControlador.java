@@ -42,6 +42,10 @@ public class ClienteControlador {
         return "exito";
     }
     
+      @GetMapping("/misMascotas")
+    public String misMascotas(){
+        return "misMascotas.html";
+    }
     
 }
 
