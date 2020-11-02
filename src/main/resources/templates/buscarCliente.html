@@ -45,39 +45,48 @@
       <div class="row">
         <div class="col-6">
           <label class="pedirDatos">Ingresa el id del cliente</label>
-          <form action="/cliente/buscarCliente" method="post">
-            <input class="pedirDatos w-75" name="id">
+          <form action="/veterinario/buscarClientePost" method="post">
+            <input class="pedirDatos w-75" name="documento">
               <!--<option th:each="clientes : ${clientes}" th:value="${clientes.documento}" th:text="${clientes.documento}"></option>-->
             </input>
             <input type="submit" value="BUSCAR" class="btn btn-info">
           </form>
         </div>
         <div class="col-12">
-          <table class="table table-striped" >
-            <div class="text-white col-lg-8 mx-auto " >
-              <p class="text-white" style="font-size:1.5rem;font-weight: bold">LISTADO DE CLIENTES<p>
-                <thead style="background-color: #029DBF; color: #fff">
-                <tr>
-                  <th scope="col">Id</th>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Mail</th>
-                  <th scope="col">Dirección</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr th:each="cliente : ${clientes}">
-                  <td><span th:text="${cliente.id}"></span></td>
-                  <td><span th:text="${cliente.nombre}"></span></td>
-                  <td><span th:text="${cliente.email}"></span></td>
-                  <td><span th:text="${cliente.domicilio}"></span></td>
-                </tr>
-              </tbody>
-            </div>
-          </table>
-        </div>
+            <form action="/veterinario/crearConsultaPost" method="post">
+                <table class="table table-striped" >
+                    <div class="text-white col-lg-8 mx-auto " >
+                      <p class="text-white" style="font-size:1.5rem;font-weight: bold">LISTADO DE CLIENTES<p>
+                        <thead style="background-color: #029DBF; color: #fff">
+                        <tr>
+                          <th scope="col">Documento</th>
+                          <th scope="col">Nombre</th>
+                          <th scope="col">Mail</th>
+                          <th scope="col">Dirección</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="cliente : ${clientes}">
+                            <td><span th:text="${cliente.documento}"></span></td>
+                            <td><span th:text="${cliente.nombre}"></span></td>
+                            <td><span th:text="${cliente.email}"></span></td>
+                            <td><span th:text="${cliente.domicilio}"></span></td>
+                            <td>
+
+                          </td>
+                        </tr>
+                      </tbody>
+                    </div>
+                </table>
+            
+                <input class="form-control" type="hidden" th:value="${documento}" id="documento" name="documento" />
+                <input type="submit" value="BUSCAR" class="btn btn-info ">
+            </form>
+        </div>    
         <div class="col-12 buttons">
           <a href="/templates/index.html" class="btn btn-back boton mt-4 mb-3">Inicio</a>
         </div>
+
       </div>
     </div>
     <footer class="d-flex align-items-center mt-5">

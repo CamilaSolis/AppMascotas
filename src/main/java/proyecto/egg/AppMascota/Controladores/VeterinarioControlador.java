@@ -1,6 +1,8 @@
 package proyecto.egg.AppMascota.Controladores;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -68,9 +70,16 @@ public class VeterinarioControlador {
     }
 
     @GetMapping("/crearConsulta")
-    public String crear_consulta(ModelMap model) {
-//        List<Cliente> clientes = clienteRepositorio.buscarClientes();
-//        model.put("clientes", clientes);
+    public String crear_consulta(ModelMap model, @RequestParam String documento) {
+        List<Mascota> mascotas = mascotaRepositorio.listarMascotasPorCliente(documento);
+        model.put("mascotas", mascotas);
+        return "crearConsulta.html";
+    }
+    
+    @PostMapping("/crearConsultaPost")
+    public String crearConsultaPost(ModelMap model, @RequestParam String documento) {
+        List<Mascota> mascotas = mascotaRepositorio.listarMascotasPorCliente(documento);
+        model.put("mascotas", mascotas);
         return "crearConsulta.html";
     }
 
@@ -100,11 +109,36 @@ public class VeterinarioControlador {
         return "exito.html";
     }
 
-    @PostMapping("/buscarCliente")
-    public String buscarCliente(@RequestParam String documento, ModelMap model) {
+    @PostMapping("/buscarClientePost")
+    public String buscarClientePost(@RequestParam String documento, ModelMap model) throws ErrorServicio {
+//        List<Mascota> mascotas = mascotaRepositorio.listarMascotasPorCliente(documento);
+//        model.put("mascotas", mascotas);
+        Optional<Cliente> cliente = clienteRepositorio.findById(documento);
+        if (cliente.isPresent()){
+            List<Cliente> clientes = new ArrayList();
+            clientes.add(cliente.get());
+            model.put("clientes", clientes);
+            model.put("documento",documento);
+        }else{
+            throw new ErrorServicio("No se encontro el cliente");
+        }
+        
+        return "buscarCliente.html";
+    }
+    
+    @GetMapping("/buscarCliente")
+    public String buscarCliente(ModelMap model){
+        List<Cliente> clientes = clienteRepositorio.buscarClientes();
+        model.put("clientes",clientes);
+        
+        return "buscarCliente.html";
+    }
+    
+    @PostMapping("/buscarMascotas")
+    public String buscarMascotas(ModelMap model, @RequestParam String documento){
+//        String documento = cliente.getDocumento();
         List<Mascota> mascotas = mascotaRepositorio.listarMascotasPorCliente(documento);
         model.put("mascotas", mascotas);
-        model.put("documento", documento);
         return "crearConsulta.html";
     }
 
