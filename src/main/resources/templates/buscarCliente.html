@@ -23,19 +23,16 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" th:href="@{/}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" th:href="@{/saberMas}">Servicios</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+                     <li class="nav-item">
+              <a class="nav-link" href="#">Contacto</a>
             </li>
           </ul>
         </div>
@@ -44,7 +41,7 @@
     <div class="container">
       <div class="row">
         <div class="col-6">
-          <label class="pedirDatos">Ingresa el id del cliente</label>
+          <label class="pedirDatos">Ingresa el documento del cliente</label>
           <form action="/veterinario/buscarClientePost" method="post">
             <input class="pedirDatos w-75" name="documento">
               <!--<option th:each="clientes : ${clientes}" th:value="${clientes.documento}" th:text="${clientes.documento}"></option>-->
@@ -80,7 +77,7 @@
                 </table>
             
                 <input class="form-control" type="hidden" th:value="${documento}" id="documento" name="documento" />
-                <input type="submit" value="BUSCAR" class="btn btn-info ">
+                <input type="submit" value="CONTINUAR" class="btn btn-info ">
             </form>
         </div>    
         <div class="col-12 buttons">

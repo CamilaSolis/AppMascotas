@@ -52,6 +52,14 @@
             <input type="submit" value="BUSCAR" class="btn btn-info">
           </form>  -->
           <div class="row">
+                <div class="col-12">
+              <label class="pedirDatos">Mascota</label>
+              <div>
+                  <select class="pedirDatos w-100" name="nombreMascota" >
+                      <option th:each="mascotas : ${mascotas}" th:value="${mascotas.nombre}" th:text="${mascotas.nombre}"></option>
+                  </select>
+              </div>
+          </div>
             <div class="col-6">
               <div class="form-group">
                 <label class="pedirDatos">Valor de la consulta</label>
@@ -76,14 +84,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-12">
-              <label class="pedirDatos">Mascota</label>
-              <div>
-                  <select class="pedirDatos w-100" name="nombreMascota" >
-                      <option th:each="mascotas : ${mascotas}" th:value="${mascotas.nombre}" th:text="${mascotas.nombre}"></option>
-                  </select>
-              </div>
-          </div>
+          
           <div class="col-12">            
               <label class="pedirDatos">Observaciones</label>
               <div class="input-group mb-3">

@@ -134,6 +134,7 @@ public class VeterinarioControlador {
         return "buscarCliente.html";
     }
     
+  
     @PostMapping("/buscarMascotas")
     public String buscarMascotas(ModelMap model, @RequestParam String documento){
 //        String documento = cliente.getDocumento();
