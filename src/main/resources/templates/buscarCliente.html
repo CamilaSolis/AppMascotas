@@ -44,8 +44,8 @@
     <div class="container">
       <div class="row">
         <div class="col-6">
-          <label class="pedirDatos">Ingresa el id de la Mascota</label>
-          <form action="/mascota/buscarHistoriaClinica" method="post">
+          <label class="pedirDatos">Ingresa el id del cliente</label>
+          <form action="/cliente/buscarCliente" method="post">
             <input class="pedirDatos w-75" name="id">
               <!--<option th:each="clientes : ${clientes}" th:value="${clientes.documento}" th:text="${clientes.documento}"></option>-->
             </input>
@@ -55,27 +55,21 @@
         <div class="col-12">
           <table class="table table-striped" >
             <div class="text-white col-lg-8 mx-auto " >
-              <p class="text-white" style="font-size:1.5rem;font-weight: bold">LISTADO DE AUTORES<p>
+              <p class="text-white" style="font-size:1.5rem;font-weight: bold">LISTADO DE CLIENTES<p>
                 <thead style="background-color: #029DBF; color: #fff">
                 <tr>
                   <th scope="col">Id</th>
-                  <th scope="col">Veterinario</th>
-                  <th scope="col">Fecha</th>
-                  <th scope="col">Motivo</th>
-                  <th scope="col">Precio</th>
-                  <th scope="col">Peso</th>
-                  <th scope="col">Observaciones</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Mail</th>
+                  <th scope="col">Dirección</th>
                 </tr>
               </thead>
               <tbody>
-                <tr th:each="consulta : ${consultas}">
-                  <td><span th:text="${consulta.id}"></span></td>
-                  <td><span th:text="${consulta.veterinario.nombre}"></span></td>
-                  <td><span th:text="${consulta.fecha}"></span></td>
-                  <td><span th:text="${consulta.motivo}"></span></td>
-                  <td><span th:text="${consulta.precio}"></span></td>
-                  <td><span th:text="${consulta.peso}"></span></td>
-                  <td><span th:text="${consulta.observaciones}"></span></td>
+                <tr th:each="cliente : ${clientes}">
+                  <td><span th:text="${cliente.id}"></span></td>
+                  <td><span th:text="${cliente.nombre}"></span></td>
+                  <td><span th:text="${cliente.email}"></span></td>
+                  <td><span th:text="${cliente.domicilio}"></span></td>
                 </tr>
               </tbody>
             </div>

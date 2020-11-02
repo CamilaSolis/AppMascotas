@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+  <head>
+    <title>ModificarCliente | Cyber Medical Pet</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- CSS PRINCIPAL (HEADER Y FOOTER) -->
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg mb-5">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="/img/logo-horizontal.png" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <h3 class="titulo">Modifica tus datos</h3>
+      <div class="row">
+        <div class="col-6">
+          <form action="/cliente/modificarCliente" method="post">
+            <label class="pedirDatos">Nombre</label>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" name="nombre" required>
+            </div>
+            <label class="pedirDatos">DNI</label>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" name="documento" required>
+            </div>
+            <label class="pedirDatos">Teléfono</label>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" name="telefono" required>
+            </div>
+            <label class="pedirDatos">Domicilio</label>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" name="domicilio" required>
+            </div>
+            <label class="pedirDatos">Mail</label>
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" name="email" required>
+            </div>
+            <label class="pedirDatos">Clave</label>
+            <div class="input-group mb-3">
+              <input type="password" class="form-control" name="clave1" required>
+            </div>
+            <label class="pedirDatos">Verifique la clave</label>
+            <div class="input-group mb-3">
+              <input type="password" class="form-control" name="clave2" required>
+            </div>
+            <div class="buttons">
+              <button class="btn btn-send mt-4" type="submit">MODIFICAR DATOS</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-6">
+          <img class="w-100 d-block ml-auto mr-auto" src="/img/hombreConMascota.png">
+        </div>
+        <div class="col-12 text-center mt-5 buttons">
+          <a th:href="@{/}" class="btn btn-back" >Inicio</a>
+        </div>
+      </div>
+    </div>
+    <footer class="d-flex align-items-center mt-5">
+        <p>Copyright@Cyber Medical Pet</p>
+    </footer>
+  </body>
+</html>

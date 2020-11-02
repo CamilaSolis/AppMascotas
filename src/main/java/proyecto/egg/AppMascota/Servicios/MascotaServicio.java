@@ -103,20 +103,20 @@ public class MascotaServicio {
 
     }
 
-//       @Transactional
-//    public void modificaciónMascota(String nombre, String ID, String raza, String sexo) throws ErrorServicio{
-//        validation(nombre, raza, sexo);
-//        Optional<Mascota> respuesta = MascotaRepositorio.findById(ID);
-//        if(respuesta != null){
-//            Mascota mascota = respuesta;
-//        mascota.setNombre(nombre);
-//        mascota.setRaza(raza);
-//        mascota.setSexo(sexo);
-//        mascotaRepositorio.save(mascota);
-//        }else{
-//            throw new ErrorServicio("La mascota no existe");
-//        }
-//    }
+       @Transactional
+    public void modificaciónMascota(String nombre, String raza, String sexo) throws ErrorServicio{
+        validation(nombre, raza, sexo);
+        Mascota respuesta = mascotaRepositorio.buscarMascotaPorNombre(nombre);
+        if(respuesta != null){
+        Mascota mascota = respuesta;
+        mascota.setNombre(nombre);
+        mascota.setRaza(raza);
+        mascota.setSexo(sexo);
+        mascotaRepositorio.save(mascota);
+        }else{
+            throw new ErrorServicio("La mascota no existe");
+        }
+    }
 //     public Mascota getMascota(){
 //        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 //        Mascota m = mascotaRepositorio.findByName(auth.getName());

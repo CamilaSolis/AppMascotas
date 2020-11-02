@@ -51,6 +51,21 @@ public class VeterinarioControlador {
         model.put("titulo", "Se creó el veterinario");
         return "exito";
     }
+    
+        @PostMapping("/modificarVeterinario")
+    public String modificacionVeterinario(ModelMap model, @RequestParam String nombre, @RequestParam String matricula, @RequestParam String nombreClinica,
+            @RequestParam String zona) throws ErrorServicio {
+
+        try {
+            veterinarioServicio.modificacionVeterinario(nombre, matricula, nombreClinica, zona);
+        } catch (ErrorServicio ex) {
+            model.put("error", ex.getMessage());
+            model.put("nombre", nombre);
+            return "veterinario.html";
+        }
+        model.put("titulo", "Se modificó el veterinario");
+        return "exito";
+    }
 
     @GetMapping("/crearConsulta")
     public String crear_consulta(ModelMap model) {
@@ -66,7 +81,6 @@ public class VeterinarioControlador {
         try {
             List<Cliente> clientes = clienteRepositorio.buscarClientes();
             model.put("clientes", clientes);
-
             consultaServicio.registrar(motivo, precio, peso, observaciones, matriculaVeterinario, nombreMascota);
 
         } catch (ErrorServicio ex) {
