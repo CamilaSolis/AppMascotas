@@ -17,6 +17,7 @@ import proyecto.egg.AppMascota.Entidades.Mascota;
 import proyecto.egg.AppMascota.Errores.ErrorServicio;
 import proyecto.egg.AppMascota.Repositorios.MascotaRepositorio;
 import proyecto.egg.AppMascota.Servicios.ClienteServicio;
+import proyecto.egg.AppMascota.Servicios.MascotaServicio;
 import proyecto.egg.AppMascota.Servicios.VeterinarioServicio;
 
 @Controller
@@ -32,6 +33,10 @@ public class PortalControlador {
     @Autowired
     private MascotaRepositorio mascotaRepositorio;
 
+    @Autowired
+    private MascotaServicio mascotaServicio;
+
+    
     @GetMapping("/")
     public String index() {
         return "index.html";
@@ -64,6 +69,8 @@ public class PortalControlador {
     @GetMapping("/opciones_cliente")
     public String panelUsuario(HttpSession session, ModelMap model) {
 
+        List<Mascota> mascotas = mascotaServicio.listarMascotasPorCliente(clienteServicio.getCliente().getDocumento());
+        model.put("mascotas", mascotas);
         model.put("clientesession", clienteServicio.getCliente());
         return "opciones_cliente.html";
 
