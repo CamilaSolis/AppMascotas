@@ -44,6 +44,15 @@ public class ClienteControlador {
         return "exito";
     }
 
+    
+      @GetMapping("/misMascotas")
+    public String misMascotas(){
+        return "misMascotas.html";
+    }
+    
+
+
+
     @PostMapping("/modificarCliente")
     public String modificaciónCliente(ModelMap model, @RequestParam String nombre, @RequestParam String documento, @RequestParam String telefono,
             @RequestParam String email, @RequestParam String domicilio, @RequestParam String clave1, @RequestParam String clave2) throws ErrorServicio {

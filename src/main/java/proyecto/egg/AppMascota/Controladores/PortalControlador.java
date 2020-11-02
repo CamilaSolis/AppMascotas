@@ -95,5 +95,8 @@ public class PortalControlador {
         return "crearConsulta.html";
     }
     
-    
+     @GetMapping("/saberMas")
+    public String saberMas() {
+        return "saberMas.html";
+    }
 }

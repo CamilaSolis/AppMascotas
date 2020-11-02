@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="es">
 
   <head>
-    <title>Consultar Clientes | Cyber Medical Pet</title>
+    <title>Crear Consulta | Cyber Medical Pet</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -23,7 +23,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+       <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
               <a class="nav-link" th:href="@{/}">Home</a>
@@ -41,9 +41,10 @@
     <div class="container">
       <div class="row">
         <div class="col-6">
-          <label class="pedirDatos">Ingresa el id del Cliente</label>
-          <form action="" method="post">
+          <label class="pedirDatos">Ingresa el id de la Mascota</label>
+          <form action="/mascota/buscarHistoriaClinica" method="post">
             <input class="pedirDatos w-75" name="id">
+              <!--<option th:each="clientes : ${clientes}" th:value="${clientes.documento}" th:text="${clientes.documento}"></option>-->
             </input>
             <input type="submit" value="BUSCAR" class="btn btn-info">
           </form>
@@ -51,36 +52,34 @@
         <div class="col-12">
           <table class="table table-striped" >
             <div class="text-white col-lg-8 mx-auto " >
-              <p class="text-white">LISTADO DE AUTORES<p>
-              <thead style="background-color: #029DBF; color: #fff">
+              <p class="text-white" style="font-size:1.5rem;font-weight: bold">LISTADO DE AUTORES<p>
+                <thead style="background-color: #029DBF; color: #fff">
                 <tr>
                   <th scope="col">Id</th>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Mascotas</th>
-                  <th scope="col">Seleccionar</th>
+                  <th scope="col">Veterinario</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Motivo</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Peso</th>
+                  <th scope="col">Observaciones</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <!-- CLIENTE DE PRUEBA, BORRAR UNA VEZ EDITADO -->
-                  <td>1</td>
-                  <td>Juanita</td>
-                  <td>Panchito, Peluza</td>
-                  <td>
-                    <div class="form-check">
-                      <input type="checkbox" class="form-check-input">
-                    </div>
-                  </td>
+                <tr th:each="consulta : ${consultas}">
+                  <td><span th:text="${consulta.id}"></span></td>
+                  <td><span th:text="${consulta.veterinario.nombre}"></span></td>
+                  <td><span th:text="${consulta.fecha}"></span></td>
+                  <td><span th:text="${consulta.motivo}"></span></td>
+                  <td><span th:text="${consulta.precio}"></span></td>
+                  <td><span th:text="${consulta.peso}"></span></td>
+                  <td><span th:text="${consulta.observaciones}"></span></td>
                 </tr>
               </tbody>
             </div>
           </table>
         </div>
         <div class="col-12 buttons">
-          <a href="#" class="btn btn-send mt-4 mb-3">Continuar</a>
-        </div>
-        <div class="col-12 text-center buttons mt-4">
-          <a href="index.html" class="btn btn-back mt-4 mb-3">Inicio</a>
+          <a href="/templates/index.html" class="btn btn-back boton mt-4 mb-3">Inicio</a>
         </div>
       </div>
     </div>

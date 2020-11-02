@@ -22,19 +22,16 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+       <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" th:href="@{/}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+              <a class="nav-link" th:href="@{/saberMas}">Servicios</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Services</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
+                     <li class="nav-item">
+              <a class="nav-link" href="#">Contacto</a>
             </li>
           </ul>
         </div>
@@ -47,7 +44,7 @@
           
       </form>
       <form action="/veterinario/crear_consulta" method="post">
-        <!-- <label class="pedirDatos">Documento del Cliente</label>
+<!--         <label class="pedirDatos">Documento del Cliente</label>
           <form action="/veterinario/buscarCliente" method="post">
             <input class="pedirDatos" name="documento">
               <option th:each="clientes : ${clientes}" th:value="${clientes.documento}" th:text="${clientes.documento}"></option>

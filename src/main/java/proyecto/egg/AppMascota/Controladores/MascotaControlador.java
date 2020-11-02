@@ -98,7 +98,7 @@ public class MascotaControlador {
     public String buscarHistoriaClinica(ModelMap model, @RequestParam String id) throws ErrorServicio{
         
         List<Consulta> consultas = mascotaServicio.historia_clinica(id);
-        Mascota mascota = mascotaRepositorio.buscarPorId(id);
+//        Mascota mascota = mascotaRepositorio.buscarPorId(id);
         model.put("consultas", consultas);
         return "verConsultas.html";
     }
