@@ -51,8 +51,9 @@
         </div>
       </div>
     </nav>
-    <div class="container text-center">
-      <h4 class="mb-4">Por favor seleccione una opcion como Cliente</h4>
+      
+        <div class="container text-center " style="display:flex;">
+      
       <a class="d-block ml-auto mr-auto mb-3" title="boton_2" href="/mascota/crearMascota">
         <img name="boton_2" src="/img/boton_2.jpg" alt="boton_2" />
       </a>
@@ -69,6 +70,32 @@
         <img name="boton_6" src="/img/boton_6.jpg" alt="Enviar formulario" />
       </a>
     </div>
+       <div class="col-12">
+          <table class="table table-striped" >
+            <div class="text-white col-lg-8 mx-auto " >
+              <p class="text-center" style="font-size:1.5rem;font-weight: bold">Mis Mascotas<p>
+                <thead style="background-color: #029DBF; color: #fff">
+                <tr>
+                   
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Raza</th>
+                  <th scope="col">Sexo</th>
+                 
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="mascota : ${mascotas}">
+                 
+                    <td><span th:text="${mascota.nombre}"></span></td>
+                  <td><span th:text="${mascota.raza}"></span></td>
+                  <td><span th:text="${mascota.sexo}"></span></td>
+                
+                </tr>
+              </tbody>
+            </div>
+          </table>
+        </div>
+  
     <footer class="d-flex align-items-center mt-5">
       <p>Copyright@Cyber Medical Pet</p>
     </footer>
