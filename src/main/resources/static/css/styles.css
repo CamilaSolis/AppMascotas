@@ -1,5 +1,9 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 
+body{
+  min-height: 100vh;
+  padding-bottom: 150px;
+}
 *{
   margin: 0;
   padding: 0;
@@ -44,18 +48,13 @@ header img{
   margin: 0 auto;
 }
 .boton{
-margin: 0 auto;
-display: block;
-width: 210px;
-}
-
-.col-6{
-    position: relative;
-    margin: auto;
+  margin: 0 auto;
+  display: block;
+  width: 210px;
 }
 .titulo{
-font-size: xx-large;
-font-weight: bold;
+  font-size: xx-large;
+  font-weight: bold;
 }
 .pedirDatos{
   font-weight: bold;
@@ -64,9 +63,12 @@ font-weight: bold;
 .form-control, input, select{
   background-color: #F6FEFF;
   border:1px solid #029DBF;
+  padding: 5px 15px;
+  border-radius: 4px;
 }
 footer{
-  bottom: 0;
+  position: absolute;
+  bottom: 0px;
   width: 100%;
   background-color: #029DBF;
   color: #fff;
@@ -192,6 +194,36 @@ footer p{
 }
 .informacion h2{
   color: #2E4962;
+}
+.buttons .btn-send, .buttons .btn-delete, .buttons .btn-back{
+  width: 200px;
+  height: 40px;
+  border-radius: 20px;
+  color: white
+}
+.buttons .btn-delete{
+  background-color: red;
+  border: 2px solid red;
+}
+.buttons .btn-send{
+  background-color: #007bff;
+  border: 2px solid #007bff;
+}
+.buttons .btn-back{
+  background-color: #6c757d;
+  border: 2px solid #545b62;
+}
+.buttons .btn-delete:hover{
+  border: 2px solid red;
+  background-color:rgb(74, 9, 9);
+}
+.buttons .btn-send:hover{
+  border: 2px solid #007bff;
+  background-color: #2E4962;
+}
+.buttons .btn-back:hover{
+  background-color: #545b62;
+  border: 2px solid #6c757d;
 }
 @media (max-width: 992px){
   header{

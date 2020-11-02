@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="es">
 
-<head>
+  <head>
     <title>Login Veterinario | Cyber Medical Pet</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,59 +11,60 @@
 
     <!-- CSS PRINCIPAL (HEADER Y FOOTER) -->
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
-    
-</head>
+      
+  </head>
 
-<body>
-  <nav class="navbar navbar-expand-lg mb-5">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-            <img src="/img/logo-horizontal.png" alt="">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
+  <body>
+    <nav class="navbar navbar-expand-lg mb-5">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+              <img src="/img/logo-horizontal.png" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
       </div>
+    </nav>
+    <div class="container">
+      <h3> Hola veterinario!  </h3>
+      <h4> Ingresá con tu matrícula y contraseña! </h4>
+      <form action="/logincheck" method="POST">
+        <div class="form-group" >
+            <p th:if="${error != null}" th:text="${error}" style="color:red"></p>
+            <p th:if="${logout != null}" th:text="${logout}" style="color:green"></p>
+            <label for="matriculaVet">Matricula</label>
+            <input type="text" class="form-control" name="emailmatricula" id="matriculaVet"  placeholder="Escriba su matricula">
+            <label for="passVet">Contraseña</label>
+            <input type="password" class="form-control" name="clave1" id="passVet" placeholder="Escriba su contraseña"> 
+            <small id="claveHelp" class="form-text text-muted">Mínimo 6 caracteres, 1 MAYÚSCULA y 1 número! .</small>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Recordar mi email</label>
+            </div>
+            <div class="buttons">
+              <button type="submit" class="btn btn-send">Ingresar</button>
+            </div>
+        </div> 
+      </form>
     </div>
-  </nav>
-        <br>
-        <h3> Hola veterinario!  </h3>
-        <h3> Ingresá con tu matrícula y contraseña! </h3>
-        <section> 
-                                
-        <form action="/logincheck" method="POST">
-            <div class="form-group" >
-                <p th:if="${error != null}" th:text="${error}" style="color:red"></p>
-                <p th:if="${logout != null}" th:text="${logout}" style="color:green"></p>
-                <label for="matriculaVet">Matricula</label>
-                <input type="text" class="form-control" name="emailmatricula" id="matriculaVet"  placeholder="Escriba su matricula">
-                <label for="passVet">Contraseña</label>
-                <input type="password" class="form-control" name="clave1" id="passVet" placeholder="Escriba su contraseña"> 
-                <small id="claveHelp" class="form-text text-muted">Mínimo 6 caracteres, 1 MAYÚSCULA y 1 número! .</small>
-                <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Recordar mi email</label>
-                </div>
-                <button type="submit" class="btn btn-primary">Ingresar</button>
-            </div> 
-        </form>
-        <footer class="d-flex align-items-center mt-5">
-            <p>Copyright@Cyber Medical Pet</p>
-        </footer>
-    </body>
+    <footer class="d-flex align-items-center mt-5">
+        <p>Copyright@Cyber Medical Pet</p>
+    </footer>
+  </body>
 </html>

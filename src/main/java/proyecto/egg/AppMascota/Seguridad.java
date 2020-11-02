@@ -33,7 +33,7 @@ public class Seguridad extends WebSecurityConfigurerAdapter {
        http
 			.authorizeRequests()
 
-				.antMatchers("/css/", "/js/", "/img/", "/*").permitAll()
+				.antMatchers("/css/", "/js/", "/img/", "/video/", "/*").permitAll()
 				.and().formLogin()
 					.loginPage("/login")
 						.loginProcessingUrl("/logincheck")

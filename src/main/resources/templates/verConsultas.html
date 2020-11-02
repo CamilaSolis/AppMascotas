@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="es">
 
-<head>
+  <head>
     <title>Crear Consulta | Cyber Medical Pet</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,88 +12,83 @@
     <!-- CSS PRINCIPAL (HEADER Y FOOTER) -->
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
     
-</head>
+  </head>
 
-<body>
-  <nav class="navbar navbar-expand-lg mb-5">
+  <body>
+    <nav class="navbar navbar-expand-lg mb-5">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="/img/logo-horizontal.png" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <div class="container">
-      <a class="navbar-brand" href="#">
-            <img src="/img/logo-horizontal.png" alt="">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
+      <div class="row">
+        <div class="col-6">
+          <label class="pedirDatos">Ingresa el id de la Mascota</label>
+          <form action="/mascota/buscarHistoriaClinica" method="post">
+            <input class="pedirDatos w-75" name="id">
+              <!--<option th:each="clientes : ${clientes}" th:value="${clientes.documento}" th:text="${clientes.documento}"></option>-->
+            </input>
+            <input type="submit" value="BUSCAR" class="btn btn-info">
+          </form>
+        </div>
+        <div class="col-12">
+          <table class="table table-striped" >
+            <div class="text-white col-lg-8 mx-auto " >
+              <p class="text-white" style="font-size:1.5rem;font-weight: bold">LISTADO DE AUTORES<p>
+                <thead style="background-color: #029DBF; color: #fff">
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Veterinario</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Motivo</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Peso</th>
+                  <th scope="col">Observaciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="consulta : ${consultas}">
+                  <td><span th:text="${consulta.id}"></span></td>
+                  <td><span th:text="${consulta.veterinario.nombre}"></span></td>
+                  <td><span th:text="${consulta.fecha}"></span></td>
+                  <td><span th:text="${consulta.motivo}"></span></td>
+                  <td><span th:text="${consulta.precio}"></span></td>
+                  <td><span th:text="${consulta.peso}"></span></td>
+                  <td><span th:text="${consulta.observaciones}"></span></td>
+                </tr>
+              </tbody>
+            </div>
+          </table>
+        </div>
+        <div class="col-12 buttons">
+          <a href="/templates/index.html" class="btn btn-back boton mt-4 mb-3">Inicio</a>
+        </div>
       </div>
     </div>
-  </nav>
-    <div class="mt-4 ml-3">
-        <div class="row">
-            <div class="form-group col-6">
-                <label class="pedirDatos">Ingresa el id de la Mascota</label>
-                <form action="/mascota/buscarHistoriaClinica" method="post">
-                    
-                    <input class="pedirDatos" name="id">
-                        <!--<option th:each="clientes : ${clientes}" th:value="${clientes.documento}" th:text="${clientes.documento}"></option>-->
-                    </input>
-                    <input type="submit" value="BUSCAR" class="btn btn-info">
-                </form>
-                
-                <table class="table table-striped" >
-                        <div class="container d-flex h-100 align-items-center">
-                            <div class="text-white col-lg-8 mx-auto " >
-                                <p class="text-white" style="font-size:1.5rem;font-weight: bold">LISTADO DE AUTORES<p>
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th scope="col">Id</th>
-                                        <th scope="col">Veterinario</th>
-                                        <th scope="col">Fecha</th>
-                                        <th scope="col">Motivo</th>
-                                        <th scope="col">Precio</th>
-                                        <th scope="col">Peso</th>
-                                        <th scope="col">Observaciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-white" style="background-color: #491217">
-                                    <tr th:each="consulta : ${consultas}">
-                                        <td><span th:text="${consulta.id}"></span></td>
-                                        <td><span th:text="${consulta.veterinario.nombre}"></span></td>
-                                        <td><span th:text="${consulta.fecha}"></span></td>
-                                        <td><span th:text="${consulta.motivo}"></span></td>
-                                        <td><span th:text="${consulta.precio}"></span></td>
-                                        <td><span th:text="${consulta.peso}"></span></td>
-                                        <td><span th:text="${consulta.observaciones}"></span></td>
-                                    </tr>
-                                </tbody>
-                            </div>
-                        </div>
-                    </table>
-                
-                
-                
-       <div class="col-12">
-        <a href="/templates/index.html" class="btn btn-secondary boton mt-4 mb-3">Inicio</a>
-     </div>
-
-    </div>
-
     <footer class="d-flex align-items-center mt-5">
-        <p>Copyright@Cyber Medical Pet</p>
+      <p>Copyright@Cyber Medical Pet</p>
     </footer>
-</body>
+  </body>
 
 </html>

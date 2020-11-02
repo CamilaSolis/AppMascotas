@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="es">
 
-<head>
+  <head>
     <title>Veterinario | Cyber Medical Pet</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,74 +12,74 @@
     <!-- CSS PRINCIPAL (HEADER Y FOOTER) -->
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
     
-</head>
+  </head>
 
-<body>
-  <nav class="navbar navbar-expand-lg mb-5">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-            <img src="/img/logo-horizontal.png" alt="">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
+  <body>
+    <nav class="navbar navbar-expand-lg mb-5">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+              <img src="/img/logo-horizontal.png" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
-
-    <strong><p align="center">Accede a nuestros servicios como Veterinario</p></strong>
-
+    </nav>
     <img align="left" src="/img/Vete_4.jpg" alt="Vete 4 " width="500" height="auto" />
     <img align="right" src="/img/Vete_6.jpg" alt="Vete 6 " width="500" height="auto" />
-
-    <form action="/veterinario/registroVeterinario" method="post" class="text-center">
-      <fieldset>
-        <legend><strong>REGITRO DE VETERINARIO</strong></legend>
-        <strong>Ingrese la Matricula del Veterinario</strong><br/>
-        <p><input type="text" name="matricula" required size="40"/></p>
-        <br/>
-        <strong>Ingrese el Nombre del Veterinario</strong><br/>
-        <p><input type="text" name="nombre" required size="40"/></p>
-        <br/>
-        <strong>Ingrese el Nombre de la Clinica del Veterinario</strong><br/>
-        <p><input type="text" name="nombreClinica" required size="40"/></p>
-        <br/>
-        <p><strong>Ingrese Zona del Veterinario</strong><br/>
-          <select name="zona">
+    <div class="container">
+      <h5 class="text-center">Accede a nuestros servicios como Veterinario</h5>
+      <form action="/veterinario/registroVeterinario" method="post" class="text-center">
+        <fieldset>
+          <h3 class="mb-4">REGITRO DE VETERINARIO</h3>
+          <label for="matricula">Ingrese la Matricula del Veterinario</label>
+          <input class="mb-3" type="text" name="matricula" required size="40"/>
+          <label for="nombre">Ingrese el Nombre del Veterinario</label>
+          <input class="mb-3" type="text" name="nombre" required size="40"/>
+          <label for="nombreClinica">Ingrese el Nombre de la Clinica del Veterinario</label>
+          <input class="mb-3" type="text" name="nombreClinica" required size="40"/>
+          <label for="zona">Ingrese Zona del Veterinario</label>
+          <select class="d-block ml-auto mr-auto mb-3" name="zona">
             <option value="1">Santiago</option> 
             <option value="2">Renca</option> 
             <option value="3">Las Condes</option>
             <option value="10">Huechuraba</option> 
           </select>
-        </p>
-        <br/>
-        <strong>Ingrese su Password</strong><br/>
-        <p><input type="password" name="password1" placeholder="Elige password fuerte"></p>
-        <br/>
-        <strong>Repita su Password</strong><br/>
-        <p><input type="password" name="password2" placeholder="Elige password fuerte"></p>
-      </fieldset>
-      <input type="submit" value="Enviar Datos" />
-      <input type="reset" value="Borrar" />
-      </legend>
-    </form>
-  <footer class="d-flex align-items-center mt-5">
-    <p>Copyright</p>
-  </footer>
-</body>
+          <div class="row mb-3">
+            <div class="col-6">
+              <label for="password1">Ingrese su Password</label>
+              <input type="password" name="password1" placeholder="Elige password fuerte">
+            </div>
+            <div class="col-6">
+              <label for="password2">Repita su Password</label>
+              <input type="password" name="password2" placeholder="Elige password fuerte">
+            </div>
+          </div>
+        </fieldset>
+        <div class="buttons mt-3">
+          <button type="submit" class="btn btn-send">Enviar Datos</button>
+          <button type="reset" class="btn btn-delete">Borrar</button>
+        </div>
+      </form>
+    </div>
+    <footer class="d-flex align-items-center mt-5">
+      <p>Copyright@Cyber Medical Pet</p>
+    </footer>
+  </body>
 </html>

@@ -1,112 +1,109 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="es">
 
-    <head>
-        <title>Crear Consulta | Cyber Medical Pet</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <head>
+      <title>Crear Consulta | Cyber Medical Pet</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-        <!-- CSS PRINCIPAL (HEADER Y FOOTER) -->
-        <link rel="stylesheet" type="text/css" href="/css/styles.css">
-        
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg mb-5">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    <img src="/img/logo-horizontal.png" alt="">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                    </ul>
+      <!-- CSS PRINCIPAL (HEADER Y FOOTER) -->
+      <link rel="stylesheet" type="text/css" href="/css/styles.css">
+      
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg mb-5">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="/img/logo-horizontal.png" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <h3 class="titulo text-center mt-4" >Ingresá la consulta</h3>
+      <h5 class="text-center mt-4">Completá los campos requeridos para registrar la consulta</h5>
+      <form action="/veterinario/crear_consulta" method="post">
+        <!-- <label class="pedirDatos">Documento del Cliente</label>
+          <form action="/veterinario/buscarCliente" method="post">
+            <input class="pedirDatos" name="documento">
+              <option th:each="clientes : ${clientes}" th:value="${clientes.documento}" th:text="${clientes.documento}"></option>
+            </input>
+            <input type="submit" value="BUSCAR" class="btn btn-info">
+          </form>  -->
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label class="pedirDatos">Valor de la consulta</label>
+                <div class="input-group mb-3">
+                  <input type="number" class="form-control" name="precio" required>
                 </div>
+                <label class="pedirDatos">Matricula del Veterinario</label>
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" name="matriculaVeterinario" required>
+                </div> 
+              </div>
             </div>
-        </nav>
-        <div style="text-align: center">
-            <h3 class="titulo mt-4" style="margin-top: 20px;">Ingresá la consulta</h3>
-            <h5 style="margin-top: 20px;">Completá los campos requeridos para registrar la consulta</h5>
-        </div>
-        <div class="mt-4 ml-3">
-            <div class="row">
-                <div class="form-group col-6">
-                    <!-- <label class="pedirDatos">Documento del Cliente</label> -->
-                    <!-- <form action="/veterinario/buscarCliente" method="post">
-                        <input class="pedirDatos" name="documento"> -->
-                            <!--<option th:each="clientes : ${clientes}" th:value="${clientes.documento}" th:text="${clientes.documento}"></option>-->
-                        <!-- </input>
-                        <input type="submit" value="BUSCAR" class="btn btn-info">
-                    </form> -->
-                    <form action="/veterinario/crear_consulta" method="post">
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label class="pedirDatos">Valor de la consulta</label>
-                                <div class="input-group mb-3">
-                                    <input type="number" class="form-control" name="precio" required>
-                                </div>
-                                <label class="pedirDatos">Matricula del Veterinario</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="matriculaVeterinario" required>
-                                </div> 
-                            </div>
-                            <div class="form-group col-6">
-                                <label class="pedirDatos">Peso de la mascota</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="peso" required>
-                                </div>
-                                <label class="pedirDatos">Motivo de la consulta</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="motivo" required>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <label class="pedirDatos">Mascota</label>
-                                <div>
-                                    <select class="pedirDatos w-100" name="nombreMascota" >
-                                        <option th:each="mascotas : ${mascotas}" th:value="${mascotas.nombre}" th:text="${mascotas.nombre}"></option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-12">            
-                                <label class="pedirDatos">Observaciones</label>
-                                <div class="input-group mb-3">
-                                    <textarea class="form-control" name="observaciones" rows="4" cols="40"
-                                        placeholder="Ingrese descripción de la consulta..."></textarea>
-                                </div>
-                            </div>
-                            <div class="col-12 boton">    
-                                <input type="submit" value="REGISTRAR CONSULTA" class="btn btn-primary boton">   
-                            </div>
-                        </div>
-                    </form>                 
-                </div>           
+            <div class="col-6">
+              <div class="form-group">
+                <label class="pedirDatos">Peso de la mascota</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="peso" required>
+                </div>
+                <label class="pedirDatos">Motivo de la consulta</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="motivo" required>
+                </div>
+              </div>
             </div>
-        <div class="col-12">
-            <a href="/templates/index.html" class="btn btn-secondary boton mt-4 mb-3">Inicio</a>
+            <div class="col-12">
+              <label class="pedirDatos">Mascota</label>
+              <div>
+                  <select class="pedirDatos w-100" name="nombreMascota" >
+                      <option th:each="mascotas : ${mascotas}" th:value="${mascotas.nombre}" th:text="${mascotas.nombre}"></option>
+                  </select>
+              </div>
+          </div>
+          <div class="col-12">            
+              <label class="pedirDatos">Observaciones</label>
+              <div class="input-group mb-3">
+                  <textarea class="form-control" name="observaciones" rows="4" cols="40"
+                      placeholder="Ingrese descripción de la consulta..."></textarea>
+              </div>
+          </div>
+          <div class="col-12 buttons">
+            <button type="submit" class="btn btn-send">REGISTRAR CONSULTA</button>
+          </div>
+          <div class="col-12 text-center buttons">
+            <a href="/templates/index.html" class="btn btn-back mt-4 mb-3">Inicio</a>
         </div>
-
         </div>
+      </form>
+    </div>
 
-        <footer class="d-flex align-items-center mt-5">
-            <p>Copyright@Cyber Medical Pet</p>
-        </footer>
-    </body>
+    <footer class="d-flex align-items-center mt-5">
+      <p>Copyright@Cyber Medical Pet</p>
+    </footer>
+  </body>
 
 </html>
