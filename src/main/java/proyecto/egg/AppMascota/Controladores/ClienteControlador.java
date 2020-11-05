@@ -41,7 +41,7 @@ public class ClienteControlador {
             return "registroCliente.html";
         }
         model.put("titulo", "Se creó el cliente");
-        return "exito";
+        return "exitoc.html";
     }
 
     
@@ -50,7 +50,11 @@ public class ClienteControlador {
         return "misMascotas.html";
     }
     
-
+    @GetMapping("/eliminar_cliente")
+    public String eliminar_cliente() throws ErrorServicio{
+        
+        return "eliminar_cliente.html";
+    }
 
 
     @PostMapping("/modificarCliente")
@@ -69,7 +73,7 @@ public class ClienteControlador {
             return "modificarCliente.html";
         }
         model.put("titulo", "Se modificó el cliente");
-        return "exito";
+        return "exitoc.html";
     }
 
     @PostMapping("/modificarMascota")
@@ -91,6 +95,6 @@ public class ClienteControlador {
         }
         model.put("titulo", "Se creó la mascota");
         model.put("descripcion", "/opciones_cliente");
-        return "exito.html";
+        return "exitoc.html";
     }
 }

@@ -17,7 +17,7 @@
   <body>
     <nav class="navbar navbar-expand-lg mb-5">
       <div class="container">
-        <a class="navbar-brand" href="#">
+       <a class="navbar-brand" href="/">
           <img src="/img/logo-horizontal.png" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,12 +41,23 @@
     <div class="container">
       <img class="d-block mr-auto ml-auto" src="/img/exito_2.png"  width="100" height="100" />
       <p class="w-100 text-center mt-5" th:text="${titulo}"></p>
-      <form class="text-center mt-5" method="get" action="">
-        <button name="botondeenvio" type="submit">
-          <img src="/img/boton_1.jpg" alt="Enviar formulario" />
-        </button>
-      </form>
+      
+        
+          
+            <div align="center"><a href="/"><img src="/img/boton_1.jpg" alt="Enviar formulario" /></a> </div>
+       
+     
     </div>
+
+<!--
+  <div class="jumbotron">
+                                    <div class="container">
+                                        <h3 class="display-4" th:text="${titulo}" ></h3>
+                                        <p th:text="${descripcion}"></p>
+                                        <p><a class="btn btn-secondary" href=th:text="${link}" rel="stylesheet"  role="button"}>Volver</a></p>
+                                    </div>
+                                    
+                                </div>-->
     <footer class="d-flex align-items-center mt-5">
       <p>Copyright</p>
     </footer>

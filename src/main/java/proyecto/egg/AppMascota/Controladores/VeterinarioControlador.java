@@ -51,11 +51,11 @@ public class VeterinarioControlador {
             return "veterinario.html";
         }
         model.put("titulo", "Se creó el veterinario");
-        return "exito";
+        return "exitov.html";
     }
     
         @PostMapping("/modificarVeterinario")
-    public String modificacionVeterinario(ModelMap model, @RequestParam String nombre, @RequestParam String matricula, @RequestParam String nombreClinica,
+    public String modificarVeterinario(ModelMap model, @RequestParam String nombre, @RequestParam String matricula, @RequestParam String nombreClinica,
             @RequestParam String zona) throws ErrorServicio {
 
         try {
@@ -66,7 +66,7 @@ public class VeterinarioControlador {
             return "veterinario.html";
         }
         model.put("titulo", "Se modificó el veterinario");
-        return "exito";
+        return "exitov.html";
     }
 
     @GetMapping("/crearConsulta")
@@ -105,8 +105,9 @@ public class VeterinarioControlador {
             return "crearConsulta.html";
         }
         model.put("titulo", "Se creó la consulta!");
-
-        return "exito.html";
+ 
+       
+        return "exitov.html";
     }
 
     @PostMapping("/buscarClientePost")
@@ -134,7 +135,16 @@ public class VeterinarioControlador {
         return "buscarCliente.html";
     }
     
-  
+  @GetMapping("/listarVeterinarios")
+    public String listarVeterinarios(ModelMap model){
+
+        List<Veterinario> veterinarios = veterinarioServicio.listarVeterinarios();
+        model.put("veterinarios", veterinarios);
+        return "listarVeterinarios.html";
+    }
+       
+    
+    
     @PostMapping("/buscarMascotas")
     public String buscarMascotas(ModelMap model, @RequestParam String documento){
 //        String documento = cliente.getDocumento();

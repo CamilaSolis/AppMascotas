@@ -57,7 +57,7 @@ public class MascotaControlador {
         }
         model.put("titulo", "Se creó la mascota");
         model.put("descripcion","/opciones_cliente");
-        return "exito.html";
+        return "exitoc.html";
     }
 
     
@@ -86,7 +86,7 @@ public class MascotaControlador {
             return "eliminar_mascota.html";
         }
         model.put("titulo","Mascota eliminada");
-        return "exito.html";
+        return "exitoc.html";
     }
     
     @GetMapping("/verConsultas")

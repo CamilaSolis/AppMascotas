@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="es">
 
   <head>
-    <title>Consultar Clientes | Cyber Medical Pet</title>
+    <title>Opciones Cliente | Cyber Medical Pet</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -11,7 +11,7 @@
 
     <!-- CSS PRINCIPAL (HEADER Y FOOTER) -->
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
-    
+      
   </head>
 
   <body>
@@ -26,6 +26,8 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
+
+  
               <a class="nav-link" th:href="@{/}">Home</a>
             </li>
             <li class="nav-item">
@@ -33,60 +35,48 @@
             </li>
                      <li class="nav-item">
               <a class="nav-link" href="#">Contacto</a>
+
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <div class="container">
-      <div class="row">
-        <div class="col-6">
-          <label class="pedirDatos">Ingresa el id del Cliente</label>
-          <form action="" method="post">
-            <input class="pedirDatos w-75" name="id">
-            </input>
-            <input type="submit" value="BUSCAR" class="btn btn-info">
-          </form>
-        </div>
-        <div class="col-12">
+      
+        
+       <div class="col-12">
           <table class="table table-striped" >
             <div class="text-white col-lg-8 mx-auto " >
-              <p class="text-white">LISTADO DE CONSULTAS<p>
-              <thead style="background-color: #029DBF; color: #fff">
+              <p class="text-center" style="font-size:1.5rem;font-weight: bold">Veterinarios<p>
+                <thead style="background-color: #029DBF; color: #fff">
                 <tr>
-                  <th scope="col">Id</th>
+                   
                   <th scope="col">Nombre</th>
-                  <th scope="col">Mascotas</th>
-                  <th scope="col">Seleccionar</th>
+                  <th scope="col">Matricula</th>
+                  <th scope="col">Clinica</th>
+                 <th scope="col">Zona</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <!-- CLIENTE DE PRUEBA, BORRAR UNA VEZ EDITADO -->
-                  <td>1</td>
-                  <td>Juanita</td>
-                  <td>Panchito, Peluza</td>
-                  <td>
-                    <div class="form-check">
-                      <input type="checkbox" class="form-check-input">
-                    </div>
-                  </td>
+                <tr th:each="veterinario : ${veterinarios}">
+                 
+                    <td><span th:text="${veterinario.nombre}"></span></td>
+                  <td><span th:text="${veterinario.matricula}"></span></td>
+                  <td><span th:text="${veterinario.nombreClinica}"></span></td>
+                  <td><span th:text="${veterinario.zona}"></span></td>
+                
                 </tr>
               </tbody>
             </div>
           </table>
         </div>
-        <div class="col-12 buttons">
-          <a href="#" class="btn btn-send mt-4 mb-3">Continuar</a>
-        </div>
-        <div class="col-12 text-center buttons mt-4">
-          <a href="index.html" class="btn btn-back mt-4 mb-3">Inicio</a>
-        </div>
-      </div>
-    </div>
+  <form>
+<div  class="btn btn-send mt-4 col-12">
+  <input type="button"  value="Volver" name="Back2" onclick="history.back()" />
+  </div>
+ </form>
+
     <footer class="d-flex align-items-center mt-5">
       <p>Copyright@Cyber Medical Pet</p>
     </footer>
   </body>
-
 </html>
